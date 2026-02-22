@@ -63,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(el => revealObserver.observe(el));
 
 
-    // 4. Contact Form Handler (Mailto fallback)
+    // 4. Contact Form Handler (Formspree AJAX)
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
     const submitBtn = form.querySelector('.send-button');
     const originalBtnText = submitBtn.innerHTML;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Basic validation
@@ -84,31 +84,35 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Simulate loading state
+        // Loading state
         submitBtn.innerHTML = 'Wird gesendet...';
         submitBtn.disabled = true;
 
-        // Construct mailto link
-        const mailSubject = encodeURIComponent(`[Website Anfrage] ${subject} von ${name}`);
-        const mailBody = encodeURIComponent(
-            `Name: ${name}\nE-Mail: ${email}\nBetreff: ${subject}\n\n--- Nachricht ---\n\n${message}`
-        );
-        const mailtoLink = `mailto:zenginolcay@outlook.com?subject=${mailSubject}&body=${mailBody}`;
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
 
-        // Small delay to simulate processing before opening mail client
-        setTimeout(() => {
-            window.location.href = mailtoLink;
-            
-            showStatus('Dein E-Mail-Programm wird geöffnet. Bitte sende die Nachricht dort ab.', 'success');
-            form.reset();
-            
-            // Reset button state
+            if (response.ok) {
+                showStatus('Nachricht erfolgreich gesendet!', 'success');
+                form.reset();
+            } else {
+                const data = await response.json();
+                if (Object.hasOwn(data, 'errors')) {
+                    showStatus(data.errors.map(err => err.message).join(', '), 'error');
+                } else {
+                    showStatus('Fehler beim Senden. Bitte versuche es erneut.', 'error');
+                }
+            }
+        } catch {
+            showStatus('Fehler beim Senden. Schreib direkt an zenginolcay@outlook.com', 'error');
+        } finally {
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
-
-            // Clear success message after a while
-            setTimeout(() => { formStatus.textContent = ''; }, 6000);
-        }, 1000);
+            setTimeout(() => { formStatus.textContent = ''; formStatus.className = 'form-status'; }, 6000);
+        }
     });
 
     function showStatus(msg, type) {
