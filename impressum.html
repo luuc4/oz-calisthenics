@@ -7,67 +7,79 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Spezifische Styles nur für die Impressums-Seite */
+        .page-header {
+            padding: 160px 0 60px; /* Mehr Platz wegen fixed navbar */
+            text-align: center;
+        }
+        .impressum-content {
+            max-width: 700px;
+            margin: 0 auto 80px;
+            background: var(--color-bg-card);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+        }
+        .impressum-content h3 { color: var(--color-accent); margin-top: 2.5rem; margin-bottom: 1rem;}
+        .impressum-content h3:first-of-type { margin-top: 0; }
+        .impressum-content a { color: var(--color-accent); text-decoration: none; }
+        .impressum-link-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: 2rem; color: var(--color-text-secondary); font-weight: 600;
+        }
+        .impressum-link-back:hover { color: var(--color-accent); }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar scrolled">
+     <nav class="navbar" style="background: var(--color-bg-main); border-bottom: 1px solid var(--border-light);">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
                 <img src="logo.png" alt="OZ Calisthenics Logo" class="logo-img">
             </a>
-            <ul class="nav-menu">
-                <li><a href="index.html#about" class="nav-link">Über mich</a></li>
-                <li><a href="index.html#training" class="nav-link">Training</a></li>
-                <li><a href="index.html#kurse" class="nav-link">Kurse</a></li>
-                <li><a href="index.html#preise" class="nav-link">Preise</a></li>
-                <li><a href="index.html#kontakt" class="nav-link">Kontakt</a></li>
-            </ul>
         </div>
     </nav>
 
-    <!-- Impressum Content -->
     <div class="container">
         <div class="page-header">
-            <span class="section-tag">Rechtliches</span>
             <h1>Impressum</h1>
         </div>
 
         <div class="impressum-content">
-            <h3>Verantwortlich für den Inhalt</h3>
+            <h3>Angaben gemäß § 5 TMG</h3>
             <p>
                 Olcay Zengin<br>
-                Sozialbetreuer / Calisthenics Coach<br>
                 Walgaustraße 98<br>
                 6713 Ludesch<br>
                 Österreich
             </p>
-            <p>E-Mail: <a href="mailto:zenginolcay@outlook.com">zenginolcay@outlook.com</a></p>
 
-            <h3>Domaininhaber &amp; Technischer Kontakt</h3>
+            <h3>Kontakt</h3>
+            <p>
+                Telefon: +43 660 1716308<br>
+                E-Mail: <a href="mailto:zenginolcay@outlook.com">zenginolcay@outlook.com</a>
+            </p>
+            <p>Berufsbezeichnung: Sozialbetreuer / Calisthenics Coach</p>
+
+            <h3>Verantwortlich für den Inhalt</h3>
+            <p>Olcay Zengin (Anschrift wie oben)</p>
+
+            <h3>Technischer Kontakt & Umsetzung</h3>
             <p>
                 Luca Greinecker<br>
                 E-Mail: <a href="mailto:greineckerluca@hotmail.com">greineckerluca@hotmail.com</a>
             </p>
 
-            <h3>Haftungshinweis</h3>
-            <p>
-                Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.
-                Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
-            </p>
-
-            <a href="index.html" class="back-link">&larr; Zurück zur Startseite</a>
+            <h3>Haftungsausschluss (Disclaimer)</h3>
+            <h4>Haftung für Inhalte</h4>
+            <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+            
+            <a href="index.html" class="impressum-link-back">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Zurück zur Startseite
+            </a>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-                <p>&copy; 2025 OZ Calisthenics – Olcay Zengin. Alle Rechte vorbehalten.</p>
-                <span class="footer-impressum" style="color: var(--accent);">Impressum</span>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
