@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branding Guide – OZ Calisthenics</title>
+    <meta name="description" content="Branding Guide von OZ Calisthenics: Farben, Typografie, Logo und UI-Stilrichtlinien.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            padding: 160px 0 48px;
+            text-align: center;
+        }
+        .page-header p {
+            max-width: 760px;
+            margin: 1rem auto 0;
+        }
+
+        .branding-layout {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .brand-panel {
+            background: var(--color-bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .brand-panel h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .brand-panel h3 {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin: 1.5rem 0 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .swatch-card {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--color-bg-secondary);
+        }
+
+        .swatch-sample {
+            height: 78px;
+            background: var(--swatch);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .swatch-meta {
+            padding: 0.85rem 1rem 1rem;
+        }
+
+        .swatch-meta strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: var(--color-text-primary);
+        }
+
+        .swatch-meta code {
+            color: var(--color-text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .type-specimen {
+            display: grid;
+            gap: 1rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .type-row {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 1rem;
+            align-items: baseline;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.9rem;
+        }
+
+        .type-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .type-label {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .token-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .token-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+        }
+
+        .token-card code {
+            display: block;
+            margin-top: 0.35rem;
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .logo-panel {
+            display: grid;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .logo-surface {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(198, 255, 0, 0.12), transparent 45%),
+                var(--color-bg-secondary);
+        }
+
+        .logo-surface img {
+            width: min(260px, 100%);
+            height: auto;
+            display: block;
+        }
+
+        .rules-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .rules-list li {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 0.9rem 1rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .rules-list strong {
+            color: var(--color-text-primary);
+        }
+
+        .ui-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-light);
+            background: var(--color-bg-secondary);
+        }
+
+        .legal-row {
+            margin: 0 0 5rem;
+            text-align: center;
+        }
+
+        .legal-row a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .legal-row a:hover {
+            color: var(--color-accent-hover);
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 120px 0 36px;
+                text-align: left;
+            }
+            .type-row {
+                grid-template-columns: 1fr;
+                gap: 0.35rem;
+            }
+            .brand-panel {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" style="background: var(--color-bg-main); border-bottom: 1px solid var(--border-light);">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Zur Startseite">
+                <img src="logo.png" alt="OZ Calisthenics Logo" class="logo-img">
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container page-header">
+            <span class="section-tag">Branding Guide</span>
+            <h1>OZ Calisthenics <span class="text-accent">Brand System</span></h1>
+            <p>Kurze Referenz fuer Farben, Typografie, Logo und UI-Stil. Die visuelle Richtung ist kraftvoll, fokussiert und kontraststark: dunkle Flaechen mit electric-lime Akzenten.</p>
+        </section>
+
+        <section class="container branding-layout">
+            <div class="brand-panel">
+                <h2>Farben</h2>
+                <p>Die Marke lebt von starkem Kontrast. Lime ist die aktive Signalfarbe fuer CTAs, Hervorhebungen und Interaktionspunkte.</p>
+                <div class="swatch-grid">
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #0a0a0a;"></div>
+                        <div class="swatch-meta">
+                            <strong>Background Main</strong>
+                            <code>#0A0A0A / --color-bg-main</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #121212;"></div>
+                        <div class="swatch-meta">
+                            <strong>Background Secondary</strong>
+                            <code>#121212 / --color-bg-secondary</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #1a1a1a;"></div>
+                        <div class="swatch-meta">
+                            <strong>Card Surface</strong>
+                            <code>#1A1A1A / --color-bg-card</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #c6ff00;"></div>
+                        <div class="swatch-meta">
+                            <strong>Accent Lime</strong>
+                            <code>#C6FF00 / --color-accent</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #d4ff33;"></div>
+                        <div class="swatch-meta">
+                            <strong>Accent Hover</strong>
+                            <code>#D4FF33 / --color-accent-hover</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #ffffff;"></div>
+                        <div class="swatch-meta">
+                            <strong>Primary Text</strong>
+                            <code>#FFFFFF / --color-text-primary</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: #a0a0a0;"></div>
+                        <div class="swatch-meta">
+                            <strong>Secondary Text</strong>
+                            <code>#A0A0A0 / --color-text-secondary</code>
+                        </div>
+                    </div>
+                    <div class="swatch-card">
+                        <div class="swatch-sample" style="--swatch: rgba(198, 255, 0, 0.15);"></div>
+                        <div class="swatch-meta">
+                            <strong>Accent Glow</strong>
+                            <code>rgba(198,255,0,0.15)</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand-panel">
+                <h2>Typografie</h2>
+                <p>Primare Schrift ist <strong>Inter</strong> in den Gewichten 400 bis 900. Headlines sind fett und kompakt, Fliesstext bleibt ruhig und gut lesbar.</p>
+                <div class="type-specimen">
+                    <div class="type-row">
+                        <div class="type-label">Headline XL / 800</div>
+                        <div style="font-weight: 800; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; letter-spacing: -0.02em;">
+                            Behandle Texte wie Training: klar, strukturiert, stark.
+                        </div>
+                    </div>
+                    <div class="type-row">
+                        <div class="type-label">Section Title / 700</div>
+                        <div style="font-weight: 700; font-size: 1.6rem;">
+                            Fundament &amp; Skills
+                        </div>
+                    </div>
+                    <div class="type-row">
+                        <div class="type-label">Body / 400</div>
+                        <div style="color: var(--color-text-secondary);">
+                            Kurze Saetze, klare Aussagen, keine leeren Versprechen. Die Tonalitaet ist motivierend, aber direkt und glaubwuerdig.
+                        </div>
+                    </div>
+                    <div class="type-row">
+                        <div class="type-label">UI Label / 600</div>
+                        <div style="font-weight: 600; letter-spacing: 0.02em;">
+                            Probetraining anfragen
+                        </div>
+                    </div>
+                </div>
+                <h3>Font Stack</h3>
+                <code>Inter, sans-serif</code>
+            </div>
+
+            <div class="brand-panel">
+                <h2>Logo &amp; Anwendung</h2>
+                <div class="logo-panel">
+                    <div class="logo-surface">
+                        <img src="logo.png" alt="OZ Calisthenics Logo">
+                    </div>
+                    <ul class="rules-list">
+                        <li><strong>Hintergrund:</strong> bevorzugt auf dunklen Flaechen einsetzen, damit der Lime-Akzent sauber wirkt.</li>
+                        <li><strong>Mindestgroesse:</strong> digital nicht unter ca. 120 px Breite verwenden.</li>
+                        <li><strong>Freiraum:</strong> rund um das Logo mindestens die Hoehe des "O" freihalten.</li>
+                        <li><strong>Nicht tun:</strong> keine Farbverlaeufe, keine Outline-Effekte, keine Verzerrung.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="brand-panel">
+                <h2>UI-Stil &amp; Komponenten</h2>
+                <p>Das Interface kombiniert klare dunkle Flaechen mit wenigen auffaelligen Highlights. Effekte sparsam einsetzen und auf Mobile reduzieren.</p>
+                <div class="ui-preview">
+                    <a href="index.html#kontakt" class="btn btn-accent">Primary CTA</a>
+                    <a href="index.html#kurse" class="btn btn-glass">Secondary CTA</a>
+                    <a href="index.html#preise" class="btn btn-outline">Outline</a>
+                </div>
+                <h3>Design Tokens</h3>
+                <div class="token-grid">
+                    <div class="token-card">
+                        <strong>Ecken</strong>
+                        <code>--radius-sm: 8px</code>
+                        <code>--radius-md: 16px</code>
+                        <code>--radius-lg: 24px</code>
+                    </div>
+                    <div class="token-card">
+                        <strong>Border / Glass</strong>
+                        <code>--border-light: rgba(255,255,255,0.08)</code>
+                        <code>--glass-bg: rgba(255,255,255,0.03)</code>
+                        <code>--glass-border: rgba(255,255,255,0.09)</code>
+                    </div>
+                    <div class="token-card">
+                        <strong>Einsatzregeln</strong>
+                        <code>Accent fuer CTAs, Icons, Highlights</code>
+                        <code>Text Secondary fuer Fliesstext</code>
+                        <code>Hover nur leicht, nicht verspielt</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container legal-row">
+            <a href="index.html">Zurueck zur Startseite</a> ·
+            <a href="impressum.html">Impressum &amp; Datenschutz</a>
+        </div>
+    </main>
+</body>
+</html>

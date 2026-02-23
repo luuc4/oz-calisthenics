@@ -757,10 +757,14 @@ p { color: var(--color-text-secondary); }
     /* Hero Mobile */
     .hero { align-items: center; text-align: left; padding-bottom: 4rem; }
     .hero-bg-pattern::after {
-        filter: blur(28px);
-        opacity: 0.35;
-        width: 70vw;
-        height: 70vw;
+        top: 4%;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105vw;
+        height: 105vw;
+        filter: blur(32px);
+        opacity: 0.5;
     }
     h1 { font-size: clamp(2rem, 9vw, 3.5rem); }
     .text-stroke-accent { -webkit-text-stroke-width: 1px; }
@@ -793,6 +797,7 @@ p { color: var(--color-text-secondary); }
     .section-header { margin-bottom: 3rem; }
 
     .bento-card { padding: 2rem; min-height: auto; }
+    .about-photo { object-position: center 62%; }
 
     /* Kurse Mobile */
     .course-highlight-card {
