@@ -729,7 +729,7 @@ p { color: var(--color-text-secondary); }
     .hero-subtitle { font-size: 1.1rem; }
     .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
     .about-image { order: -1; }
-    .about-photo { aspect-ratio: 16 / 9; max-height: 350px; }
+    .about-photo { aspect-ratio: 16 / 9; max-height: 350px; object-position: top; }
     .bento-grid { grid-template-columns: 1fr; }
 }
 

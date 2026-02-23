@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branding Guide – OZ Calisthenics</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .brand-page { padding: calc(var(--header-height) + 3rem) 0 6rem; }
+        .brand-section { margin-bottom: 5rem; }
+        .brand-section-title {
+            font-size: 1rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.15em; color: var(--color-accent);
+            margin-bottom: 2rem; padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* Logo */
+        .logo-showcase {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .logo-box {
+            padding: 3rem 2rem; border-radius: var(--radius-lg);
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border-light);
+        }
+        .logo-box img { max-width: 200px; height: auto; }
+        .logo-box.on-dark { background: var(--color-bg-main); }
+        .logo-box.on-light { background: #ffffff; }
+        .logo-box-label {
+            text-align: center; margin-top: 0.75rem;
+            font-size: 0.85rem; color: var(--color-text-secondary);
+        }
+
+        /* Colors */
+        .color-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .color-card {
+            border-radius: var(--radius-md); overflow: hidden;
+            border: 1px solid var(--border-light);
+            background: var(--color-bg-card);
+        }
+        .color-swatch { height: 100px; }
+        .color-info { padding: 1rem 1.25rem; }
+        .color-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .color-hex { font-size: 0.85rem; color: var(--color-text-secondary); font-family: monospace; }
+        .color-usage { font-size: 0.8rem; color: var(--color-text-tertiary); margin-top: 0.5rem; }
+
+        /* Typography */
+        .type-specimen {
+            background: var(--color-bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 1.5rem;
+        }
+        .type-row {
+            display: flex; justify-content: space-between; align-items: baseline;
+            padding: 1.25rem 0; border-bottom: 1px solid var(--border-light);
+        }
+        .type-row:last-child { border-bottom: none; }
+        .type-label {
+            font-size: 0.8rem; color: var(--color-text-tertiary);
+            min-width: 120px; font-family: monospace;
+        }
+        .type-example { flex: 1; }
+        .type-meta {
+            font-size: 0.75rem; color: var(--color-text-tertiary);
+            min-width: 160px; text-align: right; font-family: monospace;
+        }
+
+        /* Weights */
+        .weight-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+        .weight-card {
+            background: var(--color-bg-card); border: 1px solid var(--border-light);
+            border-radius: var(--radius-md); padding: 1.5rem; text-align: center;
+        }
+        .weight-preview { font-size: 2rem; margin-bottom: 0.5rem; }
+        .weight-name { font-size: 0.8rem; color: var(--color-text-secondary); }
+        .weight-value { font-size: 0.75rem; color: var(--color-text-tertiary); font-family: monospace; }
+
+        /* Radius & Spacing */
+        .radius-grid {
+            display: flex; gap: 2rem; flex-wrap: wrap; align-items: end;
+        }
+        .radius-item { text-align: center; }
+        .radius-box {
+            background: var(--color-accent-muted); border: 2px solid var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+        .radius-label { font-size: 0.8rem; color: var(--color-text-secondary); font-family: monospace; }
+
+        /* Buttons */
+        .button-showcase {
+            display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .button-label {
+            font-size: 0.85rem; color: var(--color-text-tertiary);
+            font-family: monospace; width: 100%; margin-bottom: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .type-row { flex-direction: column; gap: 0.25rem; }
+            .type-meta { text-align: left; }
+            .type-label { margin-bottom: 0.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo" aria-label="Zurück zur Startseite">
+                <img src="logo.png" alt="OZ Calisthenics Logo" class="logo-img">
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Startseite</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="brand-page">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 4rem;">
+                <span class="section-tag">Intern</span>
+                <h1 style="font-size: clamp(2rem, 5vw, 3.5rem);">Branding <span class="text-accent">Guide</span></h1>
+                <p class="section-subtitle" style="margin: 1rem 0 0;">Visuelle Richtlinien für OZ Calisthenics. Schriftarten, Farben, Abstände und Komponenten.</p>
+            </div>
+
+            <!-- Logo -->
+            <section class="brand-section">
+                <h2 class="brand-section-title">Logo</h2>
+                <div class="logo-showcase">
+                    <div>
+                        <div class="logo-box on-dark">
+                            <img src="logo.png" alt="Logo auf dunklem Hintergrund">
+                        </div>
+                        <p class="logo-box-label">Auf dunklem Hintergrund (Standard)</p>
+                    </div>
+                    <div>
+                        <div class="logo-box on-light">
+                            <img src="logo.png" alt="Logo auf hellem Hintergrund">
+                        </div>
+                        <p class="logo-box-label">Auf hellem Hintergrund</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Farben -->
+            <section class="brand-section">
+                <h2 class="brand-section-title">Farben</h2>
+
+                <h3 style="font-size: 1rem; margin-bottom: 1.5rem; color: var(--color-text-secondary);">Akzentfarbe</h3>
+                <div class="color-grid" style="margin-bottom: 2.5rem;">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #c6ff00;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Electric Lime</div>
+                            <div class="color-hex">#c6ff00</div>
+                            <div class="color-usage">Primäre Akzentfarbe, Buttons, Highlights</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #d4ff33;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Lime Hover</div>
+                            <div class="color-hex">#d4ff33</div>
+                            <div class="color-usage">Hover-Zustand der Akzentfarbe</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: rgba(198, 255, 0, 0.15);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Lime Muted</div>
+                            <div class="color-hex">rgba(198, 255, 0, 0.15)</div>
+                            <div class="color-usage">Dezente Glows, Hintergründe</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1rem; margin-bottom: 1.5rem; color: var(--color-text-secondary);">Hintergründe</h3>
+                <div class="color-grid" style="margin-bottom: 2.5rem;">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #0a0a0a;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Main Background</div>
+                            <div class="color-hex">#0a0a0a</div>
+                            <div class="color-usage">Haupthintergrund</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #121212;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Secondary BG</div>
+                            <div class="color-hex">#121212</div>
+                            <div class="color-usage">Abwechselnde Sections</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #1a1a1a;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Card Background</div>
+                            <div class="color-hex">#1a1a1a</div>
+                            <div class="color-usage">Karten, erhöhte Elemente</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #222222;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Input Background</div>
+                            <div class="color-hex">#222222</div>
+                            <div class="color-usage">Formularfelder</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1rem; margin-bottom: 1.5rem; color: var(--color-text-secondary);">Textfarben</h3>
+                <div class="color-grid">
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #ffffff;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Primary Text</div>
+                            <div class="color-hex">#ffffff</div>
+                            <div class="color-usage">Überschriften, wichtiger Text</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #a0a0a0;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Secondary Text</div>
+                            <div class="color-hex">#a0a0a0</div>
+                            <div class="color-usage">Fließtext, Beschreibungen</div>
+                        </div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-swatch" style="background: #666666;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Tertiary Text</div>
+                            <div class="color-hex">#666666</div>
+                            <div class="color-usage">Dezenter Text, Footer</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Typografie -->
+            <section class="brand-section">
+                <h2 class="brand-section-title">Typografie</h2>
+
+                <div class="type-specimen" style="margin-bottom: 2.5rem;">
+                    <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem; font-size: 0.9rem;">
+                        Schriftfamilie: <strong style="color: var(--color-text-primary);">Inter</strong> · Google Fonts ·
+                        <span style="font-family: monospace; color: var(--color-accent);">'Inter', sans-serif</span>
+                    </p>
+                    <div class="type-row">
+                        <span class="type-label">h1</span>
+                        <span class="type-example" style="font-size: clamp(2.5rem, 8vw, 3.5rem); font-weight: 800; line-height: 1.1;">BEHERRSCHE DEIN KÖRPERGEWICHT.</span>
+                        <span class="type-meta">clamp(2.5rem, 8vw, 5rem) / 800</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-label">h2</span>
+                        <span class="type-example" style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.1;">Transparent & Fair</span>
+                        <span class="type-meta">clamp(2rem, 5vw, 3.5rem) / 800</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-label">h3</span>
+                        <span class="type-example" style="font-size: 1.5rem; font-weight: 700; line-height: 1.1;">Fundamentale Kraft</span>
+                        <span class="type-meta">1.5rem / 700</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-label">Lead Text</span>
+                        <span class="type-example" style="font-size: 1.25rem; font-weight: 600;">Calisthenics Coach aus dem Walgau.</span>
+                        <span class="type-meta">1.25rem / 600</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-label">Body</span>
+                        <span class="type-example" style="color: var(--color-text-secondary);">Du arbeitest mit deinem eigenen Körper, entwickelst Kraft, Kontrolle und Körperspannung.</span>
+                        <span class="type-meta">1rem / 400 · line-height 1.5</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-label">Small / Tags</span>
+                        <span class="type-example" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent);">— Über mich</span>
+                        <span class="type-meta">0.8rem / 700 · uppercase</span>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 1rem; margin-bottom: 1.5rem; color: var(--color-text-secondary);">Schriftgewichte</h3>
+                <div class="weight-grid">
+                    <div class="weight-card">
+                        <div class="weight-preview" style="font-weight: 400;">Ag</div>
+                        <div class="weight-name">Regular</div>
+                        <div class="weight-value">400</div>
+                    </div>
+                    <div class="weight-card">
+                        <div class="weight-preview" style="font-weight: 500;">Ag</div>
+                        <div class="weight-name">Medium</div>
+                        <div class="weight-value">500</div>
+                    </div>
+                    <div class="weight-card">
+                        <div class="weight-preview" style="font-weight: 600;">Ag</div>
+                        <div class="weight-name">Semibold</div>
+                        <div class="weight-value">600</div>
+                    </div>
+                    <div class="weight-card">
+                        <div class="weight-preview" style="font-weight: 700;">Ag</div>
+                        <div class="weight-name">Bold</div>
+                        <div class="weight-value">700</div>
+                    </div>
+                    <div class="weight-card">
+                        <div class="weight-preview" style="font-weight: 800;">Ag</div>
+                        <div class="weight-name">Extrabold</div>
+                        <div class="weight-value">800</div>
+                    </div>
+                    <div class="weight-card">
+                        <div class="weight-preview" style="font-weight: 900;">Ag</div>
+                        <div class="weight-name">Black</div>
+                        <div class="weight-value">900</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spezialeffekte -->
+            <section class="brand-section">
+                <h2 class="brand-section-title">Text-Effekte</h2>
+                <div class="type-specimen">
+                    <div class="type-row">
+                        <span class="type-label">.text-accent</span>
+                        <span class="type-example" style="font-size: 2rem; font-weight: 800; color: var(--color-accent);">Akzent-Text</span>
+                        <span class="type-meta">color: #c6ff00</span>
+                    </div>
+                    <div class="type-row">
+                        <span class="type-label">.text-stroke-accent</span>
+                        <span class="type-example" style="font-size: 2rem; font-weight: 800; color: transparent; -webkit-text-stroke: 1.5px var(--color-accent);">KÖRPERGEWICHT</span>
+                        <span class="type-meta">stroke 1.5px #c6ff00</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Border Radius -->
+            <section class="brand-section">
+                <h2 class="brand-section-title">Border Radius</h2>
+                <div class="radius-grid">
+                    <div class="radius-item">
+                        <div class="radius-box" style="width: 80px; height: 80px; border-radius: 8px;"></div>
+                        <div class="radius-label">8px <span style="color: var(--color-text-tertiary);">· sm</span></div>
+                    </div>
+                    <div class="radius-item">
+                        <div class="radius-box" style="width: 100px; height: 100px; border-radius: 16px;"></div>
+                        <div class="radius-label">16px <span style="color: var(--color-text-tertiary);">· md</span></div>
+                    </div>
+                    <div class="radius-item">
+                        <div class="radius-box" style="width: 120px; height: 120px; border-radius: 24px;"></div>
+                        <div class="radius-label">24px <span style="color: var(--color-text-tertiary);">· lg</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Buttons -->
+            <section class="brand-section">
+                <h2 class="brand-section-title">Buttons</h2>
+                <div style="margin-bottom: 2rem;">
+                    <div class="button-label">.btn .btn-accent</div>
+                    <div class="button-showcase">
+                        <a href="#" class="btn btn-accent">Primary Button</a>
+                        <a href="#" class="btn btn-accent btn-large">Primary Large</a>
+                    </div>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <div class="button-label">.btn .btn-glass</div>
+                    <div class="button-showcase">
+                        <a href="#" class="btn btn-glass">Glass Button</a>
+                        <a href="#" class="btn btn-glass btn-sm">Glass Small</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="button-label">.btn .btn-outline</div>
+                    <div class="button-showcase">
+                        <a href="#" class="btn btn-outline">Outline Button</a>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <span>&copy; 2026 OZ Calisthenics – Olcay Zengin.</span>
+                <a href="index.html" class="impressum-link">Zurück zur Startseite</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
