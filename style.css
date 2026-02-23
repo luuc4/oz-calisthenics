@@ -541,18 +541,20 @@ p { color: var(--color-text-secondary); }
 .period { font-size: 1rem; color: var(--color-text-secondary); font-weight: 500; }
 .onRequest { font-size: 2rem; color: var(--color-accent); }
 
-.feature-list { list-style: none; margin-bottom: 2.5rem; }
-.feature-list li {
+.highlight-list { list-style: none; margin-bottom: 2.5rem; }
+.highlight-list li {
     padding: 0.75rem 0;
     border-bottom: 1px solid var(--border-light);
     display: flex; align-items: center; gap: 0.75rem;
+    color: var(--color-text-secondary);
 }
-/* Custom checkmark bullet */
-.feature-list li::before {
-    content: '✓'; color: var(--color-accent); font-weight: 900;
+.highlight-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    flex-shrink: 0;
 }
-.feature-list li.disabled { color: var(--color-text-tertiary); }
-.feature-list li.disabled::before { content: '✕'; color: var(--color-text-tertiary); }
 
 /* ============================================
    Kontakt & Formular (Modern Input Styles)
@@ -744,6 +746,8 @@ p { color: var(--color-text-secondary); }
 
     /* Hero Mobile */
     .hero { align-items: center; text-align: left; padding-bottom: 4rem; }
+    h1 { font-size: clamp(2rem, 9vw, 3.5rem); }
+    .text-stroke-accent { -webkit-text-stroke-width: 1px; }
     .hero-actions { flex-direction: column; width: 100%; }
     .btn-large { width: 100%; }
 
