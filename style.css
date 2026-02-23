@@ -797,7 +797,7 @@ p { color: var(--color-text-secondary); }
     .section-header { margin-bottom: 3rem; }
 
     .bento-card { padding: 2rem; min-height: auto; }
-    .about-photo { object-position: center 62%; }
+    .about-photo { object-position: center 58%; }
 
     /* Kurse Mobile */
     .course-highlight-card {
