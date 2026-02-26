@@ -480,6 +480,45 @@ p { color: var(--color-text-secondary); }
 }
 .location-address svg { color: var(--color-accent); flex-shrink: 0; margin-top: 3px; }
 
+.course-type-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-sm);
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+.map-quicklinks {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+.map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    padding: 0.4em 0.8em;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-accent);
+    background: var(--glass-bg);
+    transition: background 0.2s, color 0.2s;
+}
+.map-link:hover {
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+}
+.map-link svg { flex-shrink: 0; }
+
 .pt-teaser {
     margin-top: 3rem;
     padding: 2rem;
@@ -865,6 +904,8 @@ p { color: var(--color-text-secondary); }
     }
     .course-timing { flex-direction: row; justify-content: center; gap: 1rem; align-items: center; padding: 1rem; }
     .meta-info, .location-address { justify-content: center; }
+    .map-quicklinks { justify-content: center; }
+    .course-type-badge { display: block; margin: 0.5rem auto 0; width: fit-content; }
     .pt-teaser { flex-direction: column; text-align: center; gap: 1.5rem; }
 
     /* Pricing Mobile */
