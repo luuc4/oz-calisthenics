@@ -20,15 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Navbar Scroll Effect (Blur on scroll)
     const navbar = document.getElementById('navbar');
+    let isScrollTicking = false;
+
     const onScroll = () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
     };
-    let isScrollTicking = false;
+
     window.addEventListener('scroll', () => {
         if (isScrollTicking) return;
         isScrollTicking = true;
         requestAnimationFrame(() => {
             onScroll();
+            updateActiveNavLink();
+            updateBackToTop();
             isScrollTicking = false;
         });
     }, { passive: true });
@@ -41,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
 
     const toggleMenu = () => {
+        const isOpen = navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        // Prevent scrolling body when menu is open on mobile
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        navToggle.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
     navToggle.addEventListener('click', toggleMenu);
@@ -66,7 +70,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 3. Scroll Reveal Animation (Intersection Observer)
+    // 3. Active Nav Link Highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinksForHighlight = document.querySelectorAll('.nav-menu .nav-link:not(.btn-nav-cta)');
+
+    function updateActiveNavLink() {
+        const scrollY = window.scrollY + 120;
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinksForHighlight.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + currentSection);
+        });
+    }
+    updateActiveNavLink();
+
+
+    // 4. Scroll Reveal Animation (Intersection Observer)
     const revealElements = document.querySelectorAll('.scroll-reveal');
     if (isSmallScreen || prefersReducedMotion || !('IntersectionObserver' in window)) {
         revealElements.forEach(el => el.classList.add('visible'));
@@ -75,20 +102,19 @@ document.addEventListener('DOMContentLoaded', () => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Unobserve after revealing once for better performance
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            threshold: 0.15, // Trigger when 15% of element is visible
-            rootMargin: '0px 0px -50px 0px' // Trigger slightly before it enters viewport
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
     }
 
 
-    // 4. Contact Form Handler (Formspree AJAX)
+    // 5. Contact Form Handler (Formspree AJAX)
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');
     if (form && formStatus) {
@@ -98,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Basic validation
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const subjectSelect = document.getElementById('subject');
@@ -110,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Loading state
             submitBtn.innerHTML = 'Wird gesendet...';
             submitBtn.disabled = true;
 
@@ -150,9 +174,41 @@ document.addEventListener('DOMContentLoaded', () => {
         formStatus.textContent = msg;
         formStatus.className = `form-status ${type}`;
     }
-});
 
-function selectSubject(value) {
-    const select = document.getElementById('subject');
-    if (select) select.value = value;
-}
+
+    // 6. Back to Top Button
+    const backToTopBtn = document.getElementById('back-to-top');
+    function updateBackToTop() {
+        if (!backToTopBtn) return;
+        backToTopBtn.classList.toggle('visible', window.scrollY > 600);
+    }
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        updateBackToTop();
+    }
+
+
+    // 7. FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            // Close all other items
+            faqItems.forEach(other => other.classList.remove('open'));
+            // Toggle current
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        });
+    });
+
+
+    // 8. Subject selector helper (used by pricing cards)
+    window.selectSubject = function(value) {
+        const select = document.getElementById('subject');
+        if (select) select.value = value;
+    };
+});
