@@ -153,6 +153,7 @@
                     <div class="course-timing">
                         <span class="day">Donnerstag</span>
                         <span class="time">18:00 <small>Uhr</small></span>
+                        <span class="next-date" id="next-thursday"></span>
                     </div>
                     <div class="course-info">
                         <h3>Calisthenics Foundations <span class="course-type-badge">Gruppenkurs</span></h3>
@@ -160,19 +161,21 @@
                             <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 60 Minuten</span>
                             <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg> Alle Levels</span>
                         </div>
-                        <address class="location-address">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                            <span><a href="https://blugym.at/" target="_blank" rel="noopener" class="gym-link"><strong>blugym Bludenz</strong></a>, Haldenweg 2a, 6700 Bludenz</span>
-                        </address>
-                        <div class="map-quicklinks">
-                            <a href="https://maps.app.goo.gl/muRWZgkUmyk9zxxu8" target="_blank" rel="noopener" class="map-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                                Google Maps
-                            </a>
-                            <a href="https://maps.apple/p/S4epYdy2A.YBbc" target="_blank" rel="noopener" class="map-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
-                                Apple Maps
-                            </a>
+                        <div class="location-row">
+                            <address class="location-address">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span><a href="https://blugym.at/" target="_blank" rel="noopener" class="gym-link"><strong>blugym Bludenz</strong></a>, Haldenweg 2a, 6700 Bludenz</span>
+                            </address>
+                            <div class="map-quicklinks">
+                                <a href="https://maps.app.goo.gl/muRWZgkUmyk9zxxu8" target="_blank" rel="noopener" class="map-link" title="In Google Maps öffnen">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                    Google
+                                </a>
+                                <a href="https://maps.apple/p/S4epYdy2A.YBbc" target="_blank" rel="noopener" class="map-link" title="In Apple Maps öffnen">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+                                    Apple
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="course-action">
@@ -229,7 +232,7 @@
                             <li>Alle Levels willkommen</li>
                             <li>Flexibel einlösbar</li>
                         </ul>
-                        <button onclick="window.supersaas_823188&&window.supersaas_823188.show()" class="btn btn-accent btn-full btn-booking">Block sichern</button>
+                        <a href="#kontakt" class="btn btn-accent btn-full" onclick="selectSubject('Block-Buchung (5er / 10er)')">Block anfragen</a>
                     </div>
 
                     <div class="pricing-card popular scroll-reveal delay-2">
@@ -247,7 +250,7 @@
                             <li>Alle Levels willkommen</li>
                             <li>Flexibel einlösbar</li>
                         </ul>
-                        <button onclick="window.supersaas_823188&&window.supersaas_823188.show()" class="btn btn-accent btn-full btn-booking">Block sichern</button>
+                        <a href="#kontakt" class="btn btn-accent btn-full" onclick="selectSubject('Block-Buchung (5er / 10er)')">Block anfragen</a>
                     </div>
                 </div>
 
@@ -302,6 +305,7 @@
                                 <select id="subject" name="subject" required>
                                     <option value="" disabled selected></option>
                                     <option value="Personal Training Anfrage">Personal Training Anfrage</option>
+                                    <option value="Block-Buchung (5er / 10er)">Block-Buchung (5er / 10er)</option>
                                     <option value="Allgemeine Frage">Allgemeine Frage</option>
                                     <option value="Sonstiges">Sonstiges</option>
                                 </select>

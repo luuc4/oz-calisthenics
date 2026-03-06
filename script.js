@@ -6,6 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // 0. Next Thursday date
+    const nextThursdayEl = document.getElementById('next-thursday');
+    if (nextThursdayEl) {
+        const now = new Date();
+        const day = now.getDay(); // 0=Sun, 4=Thu
+        let diff = (4 - day + 7) % 7;
+        if (diff === 0) diff = 7; // if today is Thursday, show next week
+        const next = new Date(now);
+        next.setDate(now.getDate() + diff);
+        nextThursdayEl.textContent = next.toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+
     // 1. Navbar Scroll Effect (Blur on scroll)
     const navbar = document.getElementById('navbar');
     const onScroll = () => {
@@ -139,3 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formStatus.className = `form-status ${type}`;
     }
 });
+
+function selectSubject(value) {
+    const select = document.getElementById('subject');
+    if (select) select.value = value;
+}
