@@ -964,88 +964,108 @@ p { color: var(--color-text-secondary); }
 
 /* ============================================
    Cookie Consent Banner – Custom Colors
+   (Override TermsFeed .termsfeed-com---palette-dark)
    ============================================ */
-#cookie-consent-notice {
+
+/* Banner background */
+.termsfeed-com---nb {
     background-color: var(--color-bg-card) !important;
     border-top: 1px solid var(--border-light) !important;
 }
-#cookie-consent-notice .cookie-consent-notice-description,
-#cookie-consent-notice .cookie-consent-notice-title {
+
+/* Banner text */
+.termsfeed-com---palette-dark .cc-nb-title,
+.termsfeed-com---palette-dark .cc-nb-text {
     color: var(--color-text-primary) !important;
 }
-#cookie-consent-notice .cookie-consent-notice-description a {
+.termsfeed-com---palette-dark .cc-nb-text a {
     color: var(--color-accent) !important;
 }
-/* Accept / allow button */
-#btn-cookie-consent-notice-accept,
-#btn-cookie-consent-notice-allow-all {
+
+/* Accept button */
+.termsfeed-com---palette-dark .cc-nb-okagree,
+.termsfeed-com---palette-dark .cc-nb-accept {
     background-color: var(--color-accent) !important;
     color: var(--color-text-on-accent) !important;
     border: none !important;
 }
-#btn-cookie-consent-notice-accept:hover,
-#btn-cookie-consent-notice-allow-all:hover {
+.termsfeed-com---palette-dark .cc-nb-okagree:hover,
+.termsfeed-com---palette-dark .cc-nb-accept:hover {
     background-color: var(--color-accent-hover) !important;
 }
-/* Reject / deny button */
-#btn-cookie-consent-notice-reject,
-#btn-cookie-consent-notice-deny-all {
+
+/* Reject button */
+.termsfeed-com---palette-dark .cc-nb-reject {
     background-color: transparent !important;
     color: var(--color-text-primary) !important;
-    border: 1px solid var(--border-light) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
-#btn-cookie-consent-notice-reject:hover,
-#btn-cookie-consent-notice-deny-all:hover {
+.termsfeed-com---palette-dark .cc-nb-reject:hover {
     border-color: var(--color-accent) !important;
     color: var(--color-accent) !important;
 }
+
+/* Change preferences / settings link */
+.termsfeed-com---palette-dark .cc-nb-changep {
+    background-color: transparent !important;
+    color: var(--color-accent) !important;
+    border: 1px solid var(--color-accent) !important;
+}
+.termsfeed-com---palette-dark .cc-nb-changep:hover {
+    background-color: var(--color-accent) !important;
+    color: var(--color-text-on-accent) !important;
+}
+
 /* Preferences center (modal) */
-#cookie-consent-preferences-center {
+.termsfeed-com---pc-dialog {
     background-color: var(--color-bg-card) !important;
+}
+.termsfeed-com---palette-dark .cc-pc-head-title,
+.termsfeed-com---palette-dark .cc-pc-head-title-headline {
     color: var(--color-text-primary) !important;
 }
-#cookie-consent-preferences-center .cookie-consent-preferences-center-title {
-    color: var(--color-text-primary) !important;
-}
-#cookie-consent-preferences-center .cookie-consent-preferences-center-description {
+.termsfeed-com---palette-dark .cc-pc-head-text {
     color: var(--color-text-secondary) !important;
 }
-#cookie-consent-preferences-center .cookie-consent-preferences-center-ul-header {
+.termsfeed-com---palette-dark .cc-cp-body-content-entry-title {
     color: var(--color-text-primary) !important;
 }
-#cookie-consent-preferences-center .cookie-consent-preferences-center-ul-description {
+.termsfeed-com---palette-dark .cc-cp-body-content-entry-text {
     color: var(--color-text-secondary) !important;
 }
-#cookie-consent-preferences-center a {
+.termsfeed-com---palette-dark .cc-cp-body a {
     color: var(--color-accent) !important;
 }
+
 /* Preferences center buttons */
-#btn-cookie-consent-preferences-center-accept,
-#btn-cookie-consent-preferences-center-save {
+.termsfeed-com---palette-dark .cc-cp-foot-save,
+.termsfeed-com---palette-dark .cc-cp-foot-accept {
     background-color: var(--color-accent) !important;
     color: var(--color-text-on-accent) !important;
     border: none !important;
 }
-#btn-cookie-consent-preferences-center-accept:hover,
-#btn-cookie-consent-preferences-center-save:hover {
+.termsfeed-com---palette-dark .cc-cp-foot-save:hover,
+.termsfeed-com---palette-dark .cc-cp-foot-accept:hover {
     background-color: var(--color-accent-hover) !important;
 }
-#btn-cookie-consent-preferences-center-reject,
-#btn-cookie-consent-preferences-center-close {
+.termsfeed-com---palette-dark .cc-cp-foot-reject,
+.termsfeed-com---palette-dark .cc-cp-foot-close {
     background-color: transparent !important;
     color: var(--color-text-primary) !important;
-    border: 1px solid var(--border-light) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
-#btn-cookie-consent-preferences-center-reject:hover,
-#btn-cookie-consent-preferences-center-close:hover {
+.termsfeed-com---palette-dark .cc-cp-foot-reject:hover,
+.termsfeed-com---palette-dark .cc-cp-foot-close:hover {
     border-color: var(--color-accent) !important;
     color: var(--color-accent) !important;
 }
+
 /* Toggle switches */
-#cookie-consent-preferences-center input[type="checkbox"]:checked + .cookie-consent-preferences-center-ul-toggle-slider {
+.termsfeed-com---palette-dark .cc-custom-checkbox input:checked + .checkbox-toggle {
     background-color: var(--color-accent) !important;
 }
+
 /* Overlay backdrop */
-.cookie-consent-preferences-overlay {
+.termsfeed-com---pc-overlay {
     background-color: rgba(0, 0, 0, 0.7) !important;
 }
