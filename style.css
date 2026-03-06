@@ -793,6 +793,11 @@ p { color: var(--color-text-secondary); }
     display: flex; justify-content: space-between;
     color: var(--color-text-tertiary); font-size: 0.9rem;
 }
+.footer-legal-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
 .impressum-link { text-decoration: none; color: inherit; }
 .impressum-link:hover { color: var(--color-text-primary); }
 

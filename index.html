@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <!-- Google Consent Mode V2: default all denied -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied'
+        });
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ1294ECL8"></script>
     <script>
@@ -337,10 +348,55 @@
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 OZ Calisthenics – Olcay Zengin.</span>
-                <a href="impressum.html" class="impressum-link">Impressum & Datenschutz</a>
+                <span class="footer-legal-links">
+                    <a href="impressum.html" class="impressum-link">Impressum</a>
+                    <a href="datenschutz.html" class="impressum-link">Datenschutz</a>
+                    <a href="#" id="open_preferences_center" class="impressum-link">Cookie-Einstellungen</a>
+                </span>
             </div>
         </div>
     </footer>
+
+    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+    <script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function () {
+        cookieconsent.run({
+            "notice_banner_type": "simple",
+            "consent_type": "express",
+            "palette": "dark",
+            "language": "de",
+            "page_load_consent_levels": ["strictly-necessary"],
+            "notice_banner_reject_button_hide": false,
+            "preferences_center_close_button_hide": false,
+            "page_refresh_confirmation_buttons": false,
+            "website_name": "oz-calisthenics.at",
+            "website_privacy_policy_url": "https://oz-calisthenics.at/datenschutz.html",
+            "callbacks": {
+                "scripts_specific_loaded": (level) => {
+                    switch(level) {
+                        case 'tracking':
+                            gtag('consent', 'update', {
+                                'analytics_storage': 'granted'
+                            });
+                            break;
+                        case 'targeting':
+                            gtag('consent', 'update', {
+                                'ad_storage': 'granted',
+                                'ad_user_data': 'granted',
+                                'ad_personalization': 'granted',
+                                'analytics_storage': 'granted'
+                            });
+                            break;
+                    }
+                }
+            },
+            "callbacks_force": true
+        });
+    });
+    </script>
+    <noscript>Cookie Consent mit <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+    <!-- End Cookie Consent -->
 
     <script src="https://cdn.supersaas.net/widget.js" async onload="window.supersaas_823188=new SuperSaaS('620626:ozcalisthenics','823188:calisthenics',{view:'card',autoselect:'first_available',domain:'www.supersaas.de'})"></script>
     <script src="script.js" defer></script>
