@@ -244,12 +244,20 @@
                     <h2 class="section-title">Transparent & <span class="text-accent">Fair</span></h2>
                 </div>
 
-                <div class="pricing-grid">
+                <div class="pricing-toggle-wrapper scroll-reveal">
+                    <span class="pricing-toggle-label" id="toggle-label-regular">Erwachsene</span>
+                    <button class="pricing-toggle" id="pricing-toggle" role="switch" aria-checked="false" aria-label="Zwischen Erwachsenen- und Schülerpreisen wechseln">
+                        <span class="pricing-toggle-knob"></span>
+                    </button>
+                    <span class="pricing-toggle-label" id="toggle-label-student">Schüler & Studenten</span>
+                </div>
+
+                <div class="pricing-grid" id="pricing-grid">
                     <div class="pricing-card scroll-reveal">
                         <div class="pricing-header">
                             <h4>Einzelne Einheit</h4>
                             <div class="price">
-                                <span class="currency">€</span>20
+                                <span class="currency">€</span><span class="price-value" data-regular="20" data-student="15">20</span>
                                 <span class="period">/ Einheit</span>
                             </div>
                         </div>
@@ -257,19 +265,18 @@
                             <li>1× Gruppentraining</li>
                             <li>Flexibel, keine Bindung</li>
                             <li>Alle Levels willkommen</li>
-                            <li>Schüler &amp; Studenten: €15</li>
                         </ul>
                         <button onclick="window.supersaas_823188&&window.supersaas_823188.show()" class="btn btn-glass btn-full btn-booking">Anmelden</button>
                     </div>
 
                     <div class="pricing-card scroll-reveal delay-1">
-                        <div class="savings-badge">Spare 10&thinsp;€</div>
+                        <div class="savings-badge" data-regular="Spare 10&thinsp;€" data-student="Spare 5&thinsp;€">Spare 10&thinsp;€</div>
                         <div class="pricing-header">
                             <h4>5er-Block</h4>
                             <div class="price">
-                                <span class="currency">€</span>90
+                                <span class="currency">€</span><span class="price-value" data-regular="90" data-student="70">90</span>
                             </div>
-                            <span class="price-per-unit">18&thinsp;€ pro Einheit</span>
+                            <span class="price-per-unit" data-regular="18&thinsp;€ pro Einheit" data-student="14&thinsp;€ pro Einheit">18&thinsp;€ pro Einheit</span>
                         </div>
                         <ul class="highlight-list">
                             <li>5 Einheiten Gruppentraining</li>
@@ -281,13 +288,13 @@
 
                     <div class="pricing-card popular scroll-reveal delay-2">
                         <div class="popular-badge">Bester Wert</div>
-                        <div class="savings-badge">Spare 30&thinsp;€</div>
+                        <div class="savings-badge" data-regular="Spare 30&thinsp;€" data-student="Spare 20&thinsp;€">Spare 30&thinsp;€</div>
                         <div class="pricing-header">
                             <h4>10er-Block</h4>
                             <div class="price">
-                                <span class="currency">€</span>170
+                                <span class="currency">€</span><span class="price-value" data-regular="170" data-student="130">170</span>
                             </div>
-                            <span class="price-per-unit">17&thinsp;€ pro Einheit</span>
+                            <span class="price-per-unit" data-regular="17&thinsp;€ pro Einheit" data-student="13&thinsp;€ pro Einheit">17&thinsp;€ pro Einheit</span>
                         </div>
                         <ul class="highlight-list">
                             <li>10 Einheiten Gruppentraining</li>

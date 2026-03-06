@@ -190,7 +190,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // 7. FAQ Accordion
+    // 7. Pricing Toggle (Erwachsene / Schüler)
+    const pricingToggle = document.getElementById('pricing-toggle');
+    const labelRegular = document.getElementById('toggle-label-regular');
+    const labelStudent = document.getElementById('toggle-label-student');
+
+    if (pricingToggle) {
+        labelRegular.classList.add('active');
+
+        pricingToggle.addEventListener('click', () => {
+            const isStudent = pricingToggle.getAttribute('aria-checked') === 'false';
+            pricingToggle.setAttribute('aria-checked', isStudent);
+
+            labelRegular.classList.toggle('active', !isStudent);
+            labelStudent.classList.toggle('active', isStudent);
+
+            const mode = isStudent ? 'student' : 'regular';
+
+            // Animate price values
+            document.querySelectorAll('.price-value').forEach(el => {
+                el.classList.add('switching');
+                setTimeout(() => {
+                    el.textContent = el.dataset[mode];
+                    el.classList.remove('switching');
+                }, 150);
+            });
+
+            // Update per-unit prices and savings badges
+            document.querySelectorAll('.price-per-unit[data-regular]').forEach(el => {
+                el.innerHTML = el.dataset[mode];
+            });
+            document.querySelectorAll('.savings-badge[data-regular]').forEach(el => {
+                el.innerHTML = el.dataset[mode];
+            });
+        });
+    }
+
+
+    // 8. FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
@@ -206,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 8. Subject selector helper (used by pricing cards)
+    // 9. Subject selector helper (used by pricing cards)
     window.selectSubject = function(value) {
         const select = document.getElementById('subject');
         if (select) select.value = value;
