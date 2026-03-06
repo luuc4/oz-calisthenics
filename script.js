@@ -151,3 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
         formStatus.className = `form-status ${type}`;
     }
 });
+
+function selectSubject(value) {
+    const select = document.getElementById('subject');
+    if (select) select.value = value;
+}
