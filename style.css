@@ -961,3 +961,91 @@ p { color: var(--color-text-secondary); }
     .footer-brand { align-items: center; display: flex; flex-direction: column; }
     .footer-bottom { flex-direction: column-reverse; gap: 1rem; text-align: center; }
 }
+
+/* ============================================
+   Cookie Consent Banner – Custom Colors
+   ============================================ */
+#cookie-consent-notice {
+    background-color: var(--color-bg-card) !important;
+    border-top: 1px solid var(--border-light) !important;
+}
+#cookie-consent-notice .cookie-consent-notice-description,
+#cookie-consent-notice .cookie-consent-notice-title {
+    color: var(--color-text-primary) !important;
+}
+#cookie-consent-notice .cookie-consent-notice-description a {
+    color: var(--color-accent) !important;
+}
+/* Accept / allow button */
+#btn-cookie-consent-notice-accept,
+#btn-cookie-consent-notice-allow-all {
+    background-color: var(--color-accent) !important;
+    color: var(--color-text-on-accent) !important;
+    border: none !important;
+}
+#btn-cookie-consent-notice-accept:hover,
+#btn-cookie-consent-notice-allow-all:hover {
+    background-color: var(--color-accent-hover) !important;
+}
+/* Reject / deny button */
+#btn-cookie-consent-notice-reject,
+#btn-cookie-consent-notice-deny-all {
+    background-color: transparent !important;
+    color: var(--color-text-primary) !important;
+    border: 1px solid var(--border-light) !important;
+}
+#btn-cookie-consent-notice-reject:hover,
+#btn-cookie-consent-notice-deny-all:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent) !important;
+}
+/* Preferences center (modal) */
+#cookie-consent-preferences-center {
+    background-color: var(--color-bg-card) !important;
+    color: var(--color-text-primary) !important;
+}
+#cookie-consent-preferences-center .cookie-consent-preferences-center-title {
+    color: var(--color-text-primary) !important;
+}
+#cookie-consent-preferences-center .cookie-consent-preferences-center-description {
+    color: var(--color-text-secondary) !important;
+}
+#cookie-consent-preferences-center .cookie-consent-preferences-center-ul-header {
+    color: var(--color-text-primary) !important;
+}
+#cookie-consent-preferences-center .cookie-consent-preferences-center-ul-description {
+    color: var(--color-text-secondary) !important;
+}
+#cookie-consent-preferences-center a {
+    color: var(--color-accent) !important;
+}
+/* Preferences center buttons */
+#btn-cookie-consent-preferences-center-accept,
+#btn-cookie-consent-preferences-center-save {
+    background-color: var(--color-accent) !important;
+    color: var(--color-text-on-accent) !important;
+    border: none !important;
+}
+#btn-cookie-consent-preferences-center-accept:hover,
+#btn-cookie-consent-preferences-center-save:hover {
+    background-color: var(--color-accent-hover) !important;
+}
+#btn-cookie-consent-preferences-center-reject,
+#btn-cookie-consent-preferences-center-close {
+    background-color: transparent !important;
+    color: var(--color-text-primary) !important;
+    border: 1px solid var(--border-light) !important;
+}
+#btn-cookie-consent-preferences-center-reject:hover,
+#btn-cookie-consent-preferences-center-close:hover {
+    border-color: var(--color-accent) !important;
+    color: var(--color-accent) !important;
+}
+/* Toggle switches */
+#cookie-consent-preferences-center input[type="checkbox"]:checked + .cookie-consent-preferences-center-ul-toggle-slider {
+    background-color: var(--color-accent) !important;
+}
+/* Overlay backdrop */
+.cookie-consent-preferences-overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
