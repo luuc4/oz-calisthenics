@@ -80,7 +80,7 @@
                 <img src="logo.png" alt="OZ Calisthenics Logo" class="logo-img">
             </a>
             
-            <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
                 <span class="toggle-line"></span>
                 <span class="toggle-line"></span>
             </button>
@@ -95,6 +95,7 @@
             </ul>
         </div>
     </nav>
+    <div class="nav-menu-overlay" id="nav-overlay"></div>
 
     <main id="main">
         <section class="hero" id="hero">
@@ -128,10 +129,10 @@
                     <div class="about-content scroll-reveal">
                         <span class="section-tag">Über mich</span>
                         <h2 class="section-title">Coach <span class="text-accent">Olcay Zengin</span></h2>
-                            <p class="lead-text">24 Jahre, Sozialbetreuer und Calisthenics Coach aus dem Walgau.</p>
-                            <p>Fünf Jahre Sozialpsychiatrie, drei Jahre Jugendarbeit. Dort habe ich gesehen, was passiert, wenn jemand merkt: Ich werde stärker. Haltung, Ausstrahlung, Selbstvertrauen – das kommt von innen.</p>
-                            <p>Viele zögern, weil der Anfang einschüchtert. Genau da setze ich an.</p>
-                            <p>Calisthenics ist ehrlich: kein Equipment, keine Ausreden – nur du und dein Körper. Ich begleite dich Schritt für Schritt, egal wo du gerade stehst. Hauptsache, du fängst an.</p>
+                        <p class="lead-text">24 Jahre, Sozialbetreuer und Calisthenics Coach aus dem Walgau.</p>
+                        <p>Fünf Jahre Sozialpsychiatrie, drei Jahre Jugendarbeit. Dort habe ich gesehen, was passiert, wenn jemand merkt: Ich werde stärker. Haltung, Ausstrahlung, Selbstvertrauen – das kommt von innen.</p>
+                        <p>Viele zögern, weil der Anfang einschüchtert. Genau da setze ich an.</p>
+                        <p>Calisthenics ist ehrlich: kein Equipment, keine Ausreden – nur du und dein Körper. Ich begleite dich Schritt für Schritt, egal wo du gerade stehst. Hauptsache, du fängst an.</p>
                         <div class="target-groups">
                             <h3>Für wen eignet sich das Training?</h3>
                             <ul class="tag-list">
@@ -159,7 +160,7 @@
                 </div>
 
                 <div class="bento-grid">
-                    <div class="bento-card card-strength scroll-reveal">
+                    <div class="bento-card scroll-reveal">
                         <div class="card-content">
                             <div class="icon-wrapper accent-bg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg></div>
                             <h3>Fundamentale Kraft</h3>
@@ -167,7 +168,7 @@
                         </div>
                     </div>
 
-                    <div class="bento-card card-skills scroll-reveal delay-1">
+                    <div class="bento-card scroll-reveal delay-1">
                         <div class="card-content">
                             <div class="icon-wrapper icon-glow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"></circle><path d="m9 20 3-6 3 6"></path><path d="m6 8 6 2 6-2"></path><path d="M12 10v4"></path></svg></div>
                             <h3>Advanced Skills</h3>
@@ -175,11 +176,45 @@
                         </div>
                     </div>
 
-                    <div class="bento-card card-mobility scroll-reveal delay-2">
+                    <div class="bento-card scroll-reveal delay-2">
                         <div class="card-content">
                             <div class="icon-wrapper icon-glow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg></div>
                             <h3>Mobility & Flow</h3>
                             <p>Beweglichkeit ist der Schlüssel zu besserer Performance und Gesundheit. Wir machen dich geschmeidig.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="session-timeline scroll-reveal">
+                    <h3>So läuft ein Training ab</h3>
+                    <div class="timeline-steps">
+                        <div class="timeline-step">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                            </div>
+                            <strong>Aufwärmen</strong>
+                            <span>~10 Min</span>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"></circle><path d="m9 20 3-6 3 6"></path><path d="m6 8 6 2 6-2"></path><path d="M12 10v4"></path></svg>
+                            </div>
+                            <strong>Technik</strong>
+                            <span>~15 Min</span>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+                            </div>
+                            <strong>Workout</strong>
+                            <span>~25 Min</span>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </div>
+                            <strong>Cool-down</strong>
+                            <span>~10 Min</span>
                         </div>
                     </div>
                 </div>
@@ -340,7 +375,7 @@
 
                 <div class="faq-grid">
                     <div class="faq-item scroll-reveal">
-                        <button class="faq-question">
+                        <button class="faq-question" aria-expanded="false">
                             Brauche ich Vorkenntnisse?
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </button>
@@ -350,7 +385,7 @@
                     </div>
 
                     <div class="faq-item scroll-reveal delay-1">
-                        <button class="faq-question">
+                        <button class="faq-question" aria-expanded="false">
                             Was muss ich mitbringen?
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </button>
@@ -360,7 +395,7 @@
                     </div>
 
                     <div class="faq-item scroll-reveal">
-                        <button class="faq-question">
+                        <button class="faq-question" aria-expanded="false">
                             Wo kann ich parken?
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </button>
@@ -370,7 +405,7 @@
                     </div>
 
                     <div class="faq-item scroll-reveal delay-1">
-                        <button class="faq-question">
+                        <button class="faq-question" aria-expanded="false">
                             Wie bezahle ich?
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </button>
@@ -380,7 +415,7 @@
                     </div>
 
                     <div class="faq-item scroll-reveal">
-                        <button class="faq-question">
+                        <button class="faq-question" aria-expanded="false">
                             Was kostet es für Schüler?
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </button>
@@ -390,7 +425,7 @@
                     </div>
 
                     <div class="faq-item scroll-reveal delay-1">
-                        <button class="faq-question">
+                        <button class="faq-question" aria-expanded="false">
                             Was, wenn ich nicht kommen kann?
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                         </button>
@@ -489,6 +524,14 @@
                 <div class="footer-brand">
                     <img src="logo.png" alt="OZ Calisthenics" class="footer-logo">
                     <p>Bodyweight & Calisthenics Coach.<br>Trainiere intelligent, werde stark.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/oz.calisthenics/" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="https://wa.me/436601716308" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-nav">
                     <ul>

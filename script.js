@@ -44,10 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    const navOverlay = document.getElementById('nav-overlay');
+
     const toggleMenu = () => {
         const isOpen = navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
         navToggle.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+        navToggle.setAttribute('aria-expanded', isOpen);
+        if (navOverlay) navOverlay.classList.toggle('active', isOpen);
         document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
@@ -62,12 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Close menu when clicking outside
+    // Close menu when clicking outside or on overlay
     document.addEventListener('click', (e) => {
         if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
             toggleMenu();
         }
     });
+    if (navOverlay) {
+        navOverlay.addEventListener('click', toggleMenu);
+    }
 
 
     // 3. Active Nav Link Highlighting
@@ -234,10 +241,14 @@ document.addEventListener('DOMContentLoaded', () => {
         question.addEventListener('click', () => {
             const isOpen = item.classList.contains('open');
             // Close all other items
-            faqItems.forEach(other => other.classList.remove('open'));
+            faqItems.forEach(other => {
+                other.classList.remove('open');
+                other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
             // Toggle current
             if (!isOpen) {
                 item.classList.add('open');
+                question.setAttribute('aria-expanded', 'true');
             }
         });
     });
