@@ -816,6 +816,19 @@ p { color: var(--color-text-secondary); }
 }
 .impressum-link { text-decoration: none; color: inherit; }
 .impressum-link:hover { color: var(--color-text-primary); }
+.footer-credit {
+    text-align: center; padding-top: 1.25rem;
+    font-size: 0.8rem; color: var(--color-text-tertiary);
+    letter-spacing: 0.03em; opacity: 0.7;
+}
+.footer-credit a {
+    color: inherit; text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-credit a:hover {
+    color: var(--color-accent); border-bottom-color: var(--color-accent);
+}
 
 
 /* ============================================
