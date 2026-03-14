@@ -2,6 +2,13 @@
    OZ Calisthenics – Modern JS functionality
    ============================================ */
 
+/* Named constants */
+const THURSDAY = 4;
+const NAV_SCROLL_OFFSET = 120;
+const BACK_TO_TOP_THRESHOLD = 600;
+const REVEAL_THRESHOLD = 0.15;
+const SUPERSAAS_FALLBACK_URL = 'https://www.supersaas.at/schedule/ozcalisthenics/Calisthenics_Foundations';
+
 document.addEventListener('DOMContentLoaded', () => {
     const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -10,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextThursdayEl = document.getElementById('next-thursday');
     if (nextThursdayEl) {
         const now = new Date();
-        const day = now.getDay(); // 0=Sun, 4=Thu
-        let diff = (4 - day + 7) % 7;
+        const day = now.getDay();
+        let diff = (THURSDAY - day + 7) % 7;
         if (diff === 0) diff = 7; // if today is Thursday, show next week
         const next = new Date(now);
         next.setDate(now.getDate() + diff);
@@ -82,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinksForHighlight = document.querySelectorAll('.nav-menu .nav-link:not(.btn-nav-cta)');
 
     function updateActiveNavLink() {
-        const scrollY = window.scrollY + 120;
+        const scrollY = window.scrollY + NAV_SCROLL_OFFSET;
         let currentSection = '';
 
         sections.forEach(section => {
@@ -113,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.15,
+            threshold: REVEAL_THRESHOLD,
             rootMargin: '0px 0px -50px 0px'
         });
 
@@ -187,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToTopBtn = document.getElementById('back-to-top');
     function updateBackToTop() {
         if (!backToTopBtn) return;
-        backToTopBtn.classList.toggle('visible', window.scrollY > 600);
+        backToTopBtn.classList.toggle('visible', window.scrollY > BACK_TO_TOP_THRESHOLD);
     }
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', () => {
@@ -254,9 +261,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 9. Subject selector helper (used by pricing cards)
-    window.selectSubject = function(value) {
-        const select = document.getElementById('subject');
-        if (select) select.value = value;
-    };
+    // 9. Subject selector helper (used by pricing cards via data-subject)
+    document.querySelectorAll('[data-subject]').forEach(link => {
+        link.addEventListener('click', () => {
+            const select = document.getElementById('subject');
+            if (select) select.value = link.dataset.subject;
+        });
+    });
+
+
+    // 10. SuperSaaS widget init + booking buttons
+    function openBooking(e) {
+        e.preventDefault();
+        if (window.supersaas_823188) {
+            window.supersaas_823188.show();
+        } else {
+            window.open(SUPERSAAS_FALLBACK_URL, '_blank', 'noopener');
+        }
+    }
+
+    document.querySelectorAll('.btn-booking').forEach(btn => {
+        btn.addEventListener('click', openBooking);
+    });
+
+    const ssScript = document.getElementById('supersaas-script');
+    if (ssScript) {
+        ssScript.addEventListener('load', () => {
+            window.supersaas_823188 = new SuperSaaS(
+                '620626:ozcalisthenics',
+                '823188:calisthenics',
+                { view: 'card', autoselect: 'first_available', domain: 'www.supersaas.de' }
+            );
+        });
+    }
 });
