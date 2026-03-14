@@ -1427,6 +1427,14 @@ a:hover .external-link-icon { opacity: 1; }
     font-size: 0.95rem;
     line-height: 1.7;
 }
+.faq-answer a {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.faq-answer a:hover {
+    opacity: 0.8;
+}
 
 
 /* ============================================
@@ -1633,16 +1641,14 @@ a:hover .external-link-icon { opacity: 1; }
     color: var(--color-accent);
     flex-shrink: 0;
 }
-.payment-method.coming-soon {
-    opacity: 0.5;
+a.payment-link {
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    transition: border-color 0.2s, color 0.2s;
 }
-.payment-method.coming-soon::after {
-    content: 'bald';
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
+a.payment-link:hover {
+    border-color: var(--color-accent);
     color: var(--color-accent);
-    letter-spacing: 0.05em;
 }
 
 
