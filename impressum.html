@@ -1,25 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- Google Consent Mode V2: default all denied -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'analytics_storage': 'denied'
-        });
-    </script>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
+    <script src="analytics.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ1294ECL8"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-SQ1294ECL8');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum – OZ Calisthenics</title>
@@ -85,43 +69,8 @@
         </div>
     </div>
 
-    <!-- Cookie Consent by TermsFeed -->
-    <script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
-    <script type="text/javascript" charset="UTF-8">
-    document.addEventListener('DOMContentLoaded', function () {
-        cookieconsent.run({
-            "notice_banner_type": "headline",
-            "consent_type": "express",
-            "palette": "dark",
-            "language": "de",
-            "page_load_consent_levels": ["strictly-necessary"],
-            "notice_banner_reject_button_hide": false,
-            "preferences_center_close_button_hide": false,
-            "page_refresh_confirmation_buttons": false,
-            "website_name": "oz-calisthenics.at",
-            "website_privacy_policy_url": "https://oz-calisthenics.at/datenschutz.html",
-            "callbacks": {
-                "scripts_specific_loaded": (level) => {
-                    switch(level) {
-                        case 'tracking':
-                            gtag('consent', 'update', {
-                                'analytics_storage': 'granted'
-                            });
-                            break;
-                        case 'targeting':
-                            gtag('consent', 'update', {
-                                'ad_storage': 'granted',
-                                'ad_user_data': 'granted',
-                                'ad_personalization': 'granted',
-                                'analytics_storage': 'granted'
-                            });
-                            break;
-                    }
-                }
-            },
-            "callbacks_force": true
-        });
-    });
-    </script>
+    <!-- Cookie Consent -->
+    <script src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js" charset="UTF-8"></script>
+    <script src="cookie-consent.js"></script>
 </body>
 </html>

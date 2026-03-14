@@ -225,11 +225,14 @@ p { color: var(--color-text-secondary); }
 }
 .btn-nav-cta {
     background-color: var(--color-accent);
-    color: var(--color-text-on-accent) !important;
+    color: var(--color-text-on-accent);
     margin-left: 0.5rem;
     border: none;
     cursor: pointer;
     font-family: var(--font-stack);
+}
+.nav-link.btn-nav-cta {
+    color: var(--color-text-on-accent);
 }
 .btn-nav-cta:hover {
     background-color: var(--color-accent-hover);
@@ -1110,110 +1113,110 @@ a:hover .external-link-icon { opacity: 1; }
 
 /* ============================================
    Cookie Consent Banner – Custom Colors
-   (Override TermsFeed .termsfeed-com---palette-dark)
+   (Override TermsFeed via higher specificity: body prefix)
    ============================================ */
 
 /* Banner background */
-.termsfeed-com---nb {
-    background-color: var(--color-bg-card) !important;
-    border-top: 1px solid var(--border-light) !important;
+body .termsfeed-com---nb {
+    background-color: var(--color-bg-card);
+    border-top: 1px solid var(--border-light);
 }
 
 /* Banner text */
-.termsfeed-com---palette-dark .cc-nb-title,
-.termsfeed-com---palette-dark .cc-nb-text {
-    color: var(--color-text-primary) !important;
+body .termsfeed-com---palette-dark .cc-nb-title,
+body .termsfeed-com---palette-dark .cc-nb-text {
+    color: var(--color-text-primary);
 }
-.termsfeed-com---palette-dark .cc-nb-text a {
-    color: var(--color-accent) !important;
+body .termsfeed-com---palette-dark .cc-nb-text a {
+    color: var(--color-accent);
 }
 
 /* Accept button */
-.termsfeed-com---palette-dark .cc-nb-okagree,
-.termsfeed-com---palette-dark .cc-nb-accept {
-    background-color: var(--color-accent) !important;
-    color: var(--color-text-on-accent) !important;
-    border: none !important;
+body .termsfeed-com---palette-dark .cc-nb-okagree,
+body .termsfeed-com---palette-dark .cc-nb-accept {
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+    border: none;
 }
-.termsfeed-com---palette-dark .cc-nb-okagree:hover,
-.termsfeed-com---palette-dark .cc-nb-accept:hover {
-    background-color: var(--color-accent-hover) !important;
+body .termsfeed-com---palette-dark .cc-nb-okagree:hover,
+body .termsfeed-com---palette-dark .cc-nb-accept:hover {
+    background-color: var(--color-accent-hover);
 }
 
 /* Reject button */
-.termsfeed-com---palette-dark .cc-nb-reject {
-    background-color: transparent !important;
-    color: var(--color-text-primary) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+body .termsfeed-com---palette-dark .cc-nb-reject {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.termsfeed-com---palette-dark .cc-nb-reject:hover {
-    border-color: var(--color-accent) !important;
-    color: var(--color-accent) !important;
+body .termsfeed-com---palette-dark .cc-nb-reject:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* Change preferences / settings link */
-.termsfeed-com---palette-dark .cc-nb-changep {
-    background-color: transparent !important;
-    color: var(--color-accent) !important;
-    border: 1px solid var(--color-accent) !important;
+body .termsfeed-com---palette-dark .cc-nb-changep {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
 }
-.termsfeed-com---palette-dark .cc-nb-changep:hover {
-    background-color: var(--color-accent) !important;
-    color: var(--color-text-on-accent) !important;
+body .termsfeed-com---palette-dark .cc-nb-changep:hover {
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
 }
 
 /* Preferences center (modal) */
-.termsfeed-com---pc-dialog {
-    background-color: var(--color-bg-card) !important;
+body .termsfeed-com---pc-dialog {
+    background-color: var(--color-bg-card);
 }
-.termsfeed-com---palette-dark .cc-pc-head-title,
-.termsfeed-com---palette-dark .cc-pc-head-title-headline {
-    color: var(--color-text-primary) !important;
+body .termsfeed-com---palette-dark .cc-pc-head-title,
+body .termsfeed-com---palette-dark .cc-pc-head-title-headline {
+    color: var(--color-text-primary);
 }
-.termsfeed-com---palette-dark .cc-pc-head-text {
-    color: var(--color-text-secondary) !important;
+body .termsfeed-com---palette-dark .cc-pc-head-text {
+    color: var(--color-text-secondary);
 }
-.termsfeed-com---palette-dark .cc-cp-body-content-entry-title {
-    color: var(--color-text-primary) !important;
+body .termsfeed-com---palette-dark .cc-cp-body-content-entry-title {
+    color: var(--color-text-primary);
 }
-.termsfeed-com---palette-dark .cc-cp-body-content-entry-text {
-    color: var(--color-text-secondary) !important;
+body .termsfeed-com---palette-dark .cc-cp-body-content-entry-text {
+    color: var(--color-text-secondary);
 }
-.termsfeed-com---palette-dark .cc-cp-body a {
-    color: var(--color-accent) !important;
+body .termsfeed-com---palette-dark .cc-cp-body a {
+    color: var(--color-accent);
 }
 
 /* Preferences center buttons */
-.termsfeed-com---palette-dark .cc-cp-foot-save,
-.termsfeed-com---palette-dark .cc-cp-foot-accept {
-    background-color: var(--color-accent) !important;
-    color: var(--color-text-on-accent) !important;
-    border: none !important;
+body .termsfeed-com---palette-dark .cc-cp-foot-save,
+body .termsfeed-com---palette-dark .cc-cp-foot-accept {
+    background-color: var(--color-accent);
+    color: var(--color-text-on-accent);
+    border: none;
 }
-.termsfeed-com---palette-dark .cc-cp-foot-save:hover,
-.termsfeed-com---palette-dark .cc-cp-foot-accept:hover {
-    background-color: var(--color-accent-hover) !important;
+body .termsfeed-com---palette-dark .cc-cp-foot-save:hover,
+body .termsfeed-com---palette-dark .cc-cp-foot-accept:hover {
+    background-color: var(--color-accent-hover);
 }
-.termsfeed-com---palette-dark .cc-cp-foot-reject,
-.termsfeed-com---palette-dark .cc-cp-foot-close {
-    background-color: transparent !important;
-    color: var(--color-text-primary) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+body .termsfeed-com---palette-dark .cc-cp-foot-reject,
+body .termsfeed-com---palette-dark .cc-cp-foot-close {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.termsfeed-com---palette-dark .cc-cp-foot-reject:hover,
-.termsfeed-com---palette-dark .cc-cp-foot-close:hover {
-    border-color: var(--color-accent) !important;
-    color: var(--color-accent) !important;
+body .termsfeed-com---palette-dark .cc-cp-foot-reject:hover,
+body .termsfeed-com---palette-dark .cc-cp-foot-close:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 /* Toggle switches */
-.termsfeed-com---palette-dark .cc-custom-checkbox input:checked + .checkbox-toggle {
-    background-color: var(--color-accent) !important;
+body .termsfeed-com---palette-dark .cc-custom-checkbox input:checked + .checkbox-toggle {
+    background-color: var(--color-accent);
 }
 
 /* Overlay backdrop */
-.termsfeed-com---pc-overlay {
-    background-color: rgba(0, 0, 0, 0.7) !important;
+body .termsfeed-com---pc-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 
