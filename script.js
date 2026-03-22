@@ -284,6 +284,88 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', openBooking);
     });
 
+    // 10.5 Reviews Carousel
+    const reviewsTrack = document.getElementById('reviews-track');
+    const prevBtn = document.getElementById('reviews-prev');
+    const nextBtn = document.getElementById('reviews-next');
+    const dotsContainer = document.getElementById('reviews-dots');
+
+    if (reviewsTrack && prevBtn && nextBtn && dotsContainer) {
+        const cards = reviewsTrack.querySelectorAll('.review-card');
+        const totalCards = cards.length;
+
+        function getVisibleCount() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function buildDots() {
+            const visibleCount = getVisibleCount();
+            const totalDots = Math.max(1, totalCards - visibleCount + 1);
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Review ${i + 1}`);
+                dot.addEventListener('click', () => scrollToIndex(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function scrollToIndex(index) {
+            if (!cards[index]) return;
+            const gap = parseFloat(getComputedStyle(reviewsTrack).gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+            reviewsTrack.scrollTo({ left: cardWidth * index, behavior: 'smooth' });
+        }
+
+        function updateState() {
+            const gap = parseFloat(getComputedStyle(reviewsTrack).gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+            const scrollLeft = reviewsTrack.scrollLeft;
+            const currentIndex = Math.round(scrollLeft / cardWidth);
+            const visibleCount = getVisibleCount();
+            const maxIndex = Math.max(0, totalCards - visibleCount);
+
+            prevBtn.disabled = currentIndex <= 0;
+            nextBtn.disabled = currentIndex >= maxIndex;
+
+            dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => {
+            const gap = parseFloat(getComputedStyle(reviewsTrack).gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+            const currentIndex = Math.round(reviewsTrack.scrollLeft / cardWidth);
+            scrollToIndex(Math.max(0, currentIndex - 1));
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const gap = parseFloat(getComputedStyle(reviewsTrack).gap) || 0;
+            const cardWidth = cards[0].offsetWidth + gap;
+            const currentIndex = Math.round(reviewsTrack.scrollLeft / cardWidth);
+            const visibleCount = getVisibleCount();
+            scrollToIndex(Math.min(totalCards - visibleCount, currentIndex + 1));
+        });
+
+        reviewsTrack.addEventListener('scroll', () => {
+            requestAnimationFrame(updateState);
+        }, { passive: true });
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => { buildDots(); updateState(); }, 150);
+        });
+
+        buildDots();
+        updateState();
+    }
+
+
     const ssScript = document.getElementById('supersaas-script');
     if (ssScript) {
         ssScript.addEventListener('load', () => {
