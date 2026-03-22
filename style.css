@@ -669,21 +669,36 @@ p { color: var(--color-text-secondary); }
 }
 
 /* ============================================
-   Reviews Section
+   Reviews Carousel
    ============================================ */
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+.reviews-carousel {
+    position: relative;
     margin-bottom: 3rem;
+    overflow: hidden;
 }
+.reviews-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.5rem 0 1.5rem;
+}
+.reviews-track::-webkit-scrollbar { display: none; }
 .review-card {
+    flex: 0 0 calc(33.333% - 1rem);
+    min-width: 280px;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-md);
     padding: 2rem;
     backdrop-filter: blur(var(--blur-amount));
     transition: border-color 0.3s, transform 0.3s;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
 }
 .review-card:hover {
     border-color: var(--border-accent);
@@ -701,12 +716,70 @@ p { color: var(--color-text-secondary); }
     line-height: 1.7;
     margin-bottom: 1rem;
     font-style: italic;
+    flex: 1;
 }
 .review-author {
     color: var(--color-text-primary);
     font-weight: 600;
     font-size: 0.9rem;
 }
+
+/* Carousel Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(calc(-50% - 1rem));
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, background 0.3s, opacity 0.3s;
+    z-index: 2;
+    opacity: 0;
+}
+.reviews-carousel:hover .carousel-btn { opacity: 1; }
+.carousel-btn:hover {
+    border-color: var(--border-accent);
+    background: var(--color-accent);
+    color: var(--color-bg);
+}
+.carousel-btn:disabled {
+    opacity: 0.2 !important;
+    cursor: default;
+    pointer-events: none;
+}
+.carousel-btn-prev { left: -4px; }
+.carousel-btn-next { right: -4px; }
+
+/* Carousel Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+}
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--glass-border);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s, transform 0.3s;
+}
+.carousel-dot.active {
+    background: var(--color-accent);
+    transform: scale(1.3);
+}
+
 .reviews-cta {
     text-align: center;
 }
@@ -959,6 +1032,7 @@ a:hover .external-link-icon { opacity: 1; }
     .about-image { order: -1; }
     .about-photo { aspect-ratio: 16 / 9; max-height: 350px; object-position: top; }
     .bento-grid { grid-template-columns: 1fr; }
+    .review-card { flex: 0 0 calc(50% - 0.75rem); }
 }
 
 /* Mobile Phones */
@@ -1103,7 +1177,10 @@ a:hover .external-link-icon { opacity: 1; }
     .section-darker .pt-teaser { flex-direction: column; text-align: center; gap: 1.5rem; }
 
     /* Reviews Mobile */
-    .reviews-grid { grid-template-columns: 1fr; }
+    .review-card { flex: 0 0 85%; min-width: 0; }
+    .carousel-btn { opacity: 1; width: 36px; height: 36px; }
+    .carousel-btn-prev { left: 4px; }
+    .carousel-btn-next { right: 4px; }
 
     /* Footer Mobile */
     .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
