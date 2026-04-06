@@ -25,6 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
         nextThursdayEl.textContent = next.toLocaleDateString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric' });
     }
 
+    // 0b. Dynamic age display
+    const ageEl = document.getElementById('olcay-age');
+    if (ageEl) {
+        const birth = new Date(2001, 2, 30); // 30. März 2001
+        const today = new Date();
+        let age = today.getFullYear() - birth.getFullYear();
+        const m = today.getMonth() - birth.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+        ageEl.textContent = age;
+    }
+
     // 1. Navbar Scroll Effect (Blur on scroll)
     const navbar = document.getElementById('navbar');
     let isScrollTicking = false;
