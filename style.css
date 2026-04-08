@@ -452,39 +452,116 @@ p { color: var(--color-text-secondary); }
 /* ============================================
    Kurse Section
    ============================================ */
-.course-highlight-card {
+.course-schedule {
     background: linear-gradient(135deg, var(--color-bg-card), var(--color-bg-secondary));
     border: 1px solid var(--border-accent);
     border-radius: var(--radius-lg);
-    padding: 2.5rem;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 2.5rem;
-    align-items: center;
+    overflow: hidden;
     box-shadow: 0 10px 40px -10px rgba(198, 255, 0, 0.1);
 }
 
-.course-timing {
-    text-align: center;
-    padding: 1.5rem 2.5rem;
+.course-schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2.5rem;
     background: var(--color-accent);
     color: var(--color-text-on-accent);
-    border-radius: var(--radius-md);
+}
+.schedule-day {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
-.course-timing .day { font-weight: 700; font-size: 1.1rem; }
-.course-timing .time { font-size: 2rem; font-weight: 900; line-height: 1; }
-.course-timing small { font-size: 1rem; font-weight: 600; }
-.course-timing .next-date { font-size: 0.85rem; font-weight: 600; opacity: 0.85; margin-top: 0.25rem; }
+.schedule-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.schedule-meta .next-date {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.85;
+}
+.schedule-meta .meta-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+.course-schedule-header .course-type-badge {
+    background: var(--color-text-on-accent);
+    color: var(--color-accent);
+}
 
-.course-info h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-.meta-info {
-    display: flex; gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-text-secondary); font-weight: 500;
+.course-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 2rem 2.5rem;
 }
-.meta-info span { display: flex; align-items: center; gap: 0.5rem; }
+
+.course-card {
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--border-light);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.course-card:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 4px 20px -4px rgba(198, 255, 0, 0.1);
+}
+
+.course-card-time {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.course-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+.course-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+.course-focus-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.course-focus-tags span {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3em 0.75em;
+    border-radius: 20px;
+    background: rgba(198, 255, 0, 0.08);
+    color: var(--color-accent);
+    border: 1px solid rgba(198, 255, 0, 0.2);
+}
+
+.course-schedule-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid var(--border-light);
+    gap: 1.5rem;
+}
 
 .location-address {
     font-style: normal;
@@ -504,7 +581,6 @@ p { color: var(--color-text-secondary); }
     padding: 0.2em 0.6em;
     border-radius: var(--radius-sm);
     vertical-align: middle;
-    margin-left: 0.5rem;
 }
 
 .location-row {
@@ -1131,26 +1207,35 @@ a:hover .external-link-icon { opacity: 1; }
     .about-photo { object-position: center 55%; }
 
     /* Kurse Mobile */
-    .course-highlight-card {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+    .course-schedule-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
         text-align: center;
+    }
+    .schedule-meta {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .course-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
         padding: 1.25rem;
     }
-    .course-timing {
-        flex-direction: row;
-        justify-content: center;
-        gap: 0.75rem;
-        align-items: center;
-        padding: 0.75rem 1rem;
-        border-radius: var(--radius-sm);
+    .course-card {
+        padding: 1.5rem;
+        text-align: center;
     }
-    .course-timing .day { font-size: 1rem; }
-    .course-timing .time { font-size: 1.5rem; }
-    .course-timing small { font-size: 0.85rem; }
-    .course-timing .next-date { font-size: 0.8rem; }
-    .course-info h3 { font-size: 1.3rem; }
-    .meta-info { justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+    .course-card h3 { font-size: 1.2rem; }
+    .course-focus-tags { justify-content: center; }
+    .course-schedule-footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+    .course-schedule-footer .btn { width: 100%; }
     .location-address {
         justify-content: center;
         text-align: center;
@@ -1164,9 +1249,6 @@ a:hover .external-link-icon { opacity: 1; }
         gap: 0.75rem;
     }
     .map-quicklinks { justify-content: center; }
-    .course-type-badge { display: block; margin: 0.5rem auto 0; width: fit-content; }
-    .course-action { width: 100%; }
-    .course-action .btn { width: 100%; }
     .pt-teaser { flex-direction: column; text-align: center; gap: 1.5rem; }
 
     /* Pricing Mobile */
