@@ -103,6 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.getElementById('nav-menu');
     const navOverlay = document.getElementById('nav-overlay');
     const navLinks = document.querySelectorAll('.nav-link');
+    let lastFocusedBeforeMenu = null;
+
+    const getMenuFocusables = () => (
+        navMenu ? navMenu.querySelectorAll('a, button') : []
+    );
 
     const closeMenu = () => {
         if (!navMenu || !navMenu.classList.contains('active')) return;
@@ -112,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle?.setAttribute('aria-expanded', 'false');
         navOverlay?.classList.remove('active');
         document.body.style.overflow = '';
+        lastFocusedBeforeMenu?.focus?.();
+        lastFocusedBeforeMenu = null;
     };
 
     const toggleMenu = () => {
@@ -123,6 +130,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navToggle.setAttribute('aria-expanded', String(willOpen));
         navOverlay?.classList.toggle('active', willOpen);
         document.body.style.overflow = willOpen ? 'hidden' : '';
+        if (willOpen) {
+            lastFocusedBeforeMenu = document.activeElement;
+            getMenuFocusables()[0]?.focus();
+        }
     };
 
     navToggle?.addEventListener('click', toggleMenu);
@@ -140,7 +151,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navMenu?.classList.contains('active')) closeMenu();
+        if (!navMenu?.classList.contains('active')) return;
+        if (e.key === 'Escape') { closeMenu(); return; }
+        if (e.key !== 'Tab') return;
+
+        const focusables = Array.from(getMenuFocusables());
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
     });
 
     // 3. Scroll Reveal Animation (Intersection Observer)
