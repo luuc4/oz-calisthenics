@@ -264,7 +264,8 @@ p { color: var(--color-text-secondary); }
    Hero Section
    ============================================ */
 .hero {
-    min-height: 95vh; /* Slightly less than full height for modern look */
+    min-height: 95vh;
+    min-height: 95dvh; /* Handles mobile address-bar toggling */
     padding-top: var(--header-height);
     display: flex;
     align-items: center;
@@ -591,9 +592,14 @@ p { color: var(--color-text-secondary); }
 }
 .map-quicklinks {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
-.map-link {
+.ics-link {
+    line-height: 1;
+}
+.map-link,
+.ics-link {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
@@ -605,9 +611,12 @@ p { color: var(--color-text-secondary); }
     border-radius: var(--radius-sm);
     border: 1px solid var(--border-accent);
     background: var(--glass-bg);
+    cursor: pointer;
+    font-family: inherit;
     transition: background 0.2s, color 0.2s;
 }
-.map-link:hover {
+.map-link:hover,
+.ics-link:hover {
     background: var(--color-accent);
     color: var(--color-text-on-accent);
 }
@@ -1259,7 +1268,7 @@ a:hover .external-link-icon { opacity: 1; }
 
     /* Reviews Mobile */
     .review-card { flex: 0 0 100%; min-width: 0; }
-    .carousel-btn { width: 32px; height: 32px; }
+    .carousel-btn { width: 44px; height: 44px; }
     .carousel-btn-prev { left: 4px; }
     .carousel-btn-next { right: 4px; }
 
@@ -1267,6 +1276,40 @@ a:hover .external-link-icon { opacity: 1; }
     .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
     .footer-brand { align-items: center; display: flex; flex-direction: column; }
     .footer-bottom { flex-direction: column-reverse; gap: 1rem; text-align: center; }
+
+    /* Session Timeline Mobile */
+    .session-timeline { padding: 1.5rem; }
+    .timeline-steps { gap: 0.25rem; }
+    .timeline-steps::before { left: 20px; right: 20px; }
+    .timeline-step strong { font-size: 0.78rem; }
+    .timeline-step span { font-size: 0.7rem; }
+    .timeline-icon { width: 36px; height: 36px; }
+    .timeline-icon svg { width: 16px; height: 16px; }
+
+    /* Floating buttons + misc */
+    .scroll-indicator { display: none; }
+    .back-to-top {
+        bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+        right: calc(1.5rem + env(safe-area-inset-right, 0px));
+        width: 44px; height: 44px;
+    }
+    .whatsapp-float {
+        bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+        left: calc(1.5rem + env(safe-area-inset-left, 0px));
+        width: 52px; height: 52px;
+    }
+    .faq-grid { grid-template-columns: 1fr; }
+    .legal-content, .impressum-content { padding: 24px; }
+    .payment-info { padding: 1.25rem; }
+    .pricing-toggle-wrapper { gap: 0.75rem; }
+    .pricing-toggle-label { font-size: 0.85rem; }
+    .contact-channel { font-size: 0.85rem; }
+    .starter-offer-banner { font-size: 0.8rem; padding: 0.4rem 1rem; }
+
+    /* Larger touch target for pricing toggle */
+    .pricing-toggle { width: 56px; height: 32px; }
+    .pricing-toggle-knob { width: 22px; height: 22px; }
+    .pricing-toggle[aria-checked="true"] .pricing-toggle-knob { transform: translateX(24px); }
 }
 
 /* ============================================
@@ -1471,8 +1514,8 @@ body .termsfeed-com---pc-overlay {
    ============================================ */
 .back-to-top {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    right: calc(2rem + env(safe-area-inset-right, 0px));
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -1575,18 +1618,23 @@ body .termsfeed-com---pc-overlay {
     transform: rotate(45deg);
 }
 .faq-answer {
-    max-height: 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.faq-answer > p {
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), padding 0.4s ease;
+    min-height: 0;
     padding: 0 1.5rem;
-}
-.faq-item.open .faq-answer {
-    max-height: 300px;
-    padding: 0 1.5rem 1.25rem;
-}
-.faq-answer p {
     font-size: 0.95rem;
     line-height: 1.7;
+    transition: padding 0.4s ease;
+}
+.faq-item.open .faq-answer {
+    grid-template-rows: 1fr;
+}
+.faq-item.open .faq-answer > p {
+    padding: 0 1.5rem 1.25rem;
 }
 .faq-answer a {
     color: var(--color-accent);
@@ -1660,24 +1708,13 @@ body .termsfeed-com---pc-overlay {
     color: var(--color-text-secondary);
 }
 
-@media (max-width: 768px) {
-    .session-timeline { padding: 1.5rem; }
-    .timeline-steps { gap: 0.25rem; }
-    .timeline-steps::before { left: 20px; right: 20px; }
-    .timeline-step strong { font-size: 0.78rem; }
-    .timeline-step span { font-size: 0.7rem; }
-    .timeline-icon { width: 36px; height: 36px; }
-    .timeline-icon svg { width: 16px; height: 16px; }
-}
-
-
 /* ============================================
    Floating WhatsApp Button
    ============================================ */
 .whatsapp-float {
     position: fixed;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+    left: calc(2rem + env(safe-area-inset-left, 0px));
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -1715,6 +1752,8 @@ body .termsfeed-com---pc-overlay {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--color-text-secondary);
+    cursor: pointer;
+    user-select: none;
     transition: color 0.3s ease;
 }
 .pricing-toggle-label.active {
@@ -1841,17 +1880,14 @@ a.payment-link:hover {
 
 
 /* ============================================
-   Mobile Adjustments for new elements
+   Performance: skip rendering below-fold sections
    ============================================ */
-@media (max-width: 768px) {
-    .scroll-indicator { display: none; }
-    .back-to-top { bottom: 1.5rem; right: 1.5rem; width: 44px; height: 44px; }
-    .whatsapp-float { bottom: 1.5rem; left: 1.5rem; width: 52px; height: 52px; }
-    .faq-grid { grid-template-columns: 1fr; }
-    .legal-content, .impressum-content { padding: 24px; }
-    .payment-info { padding: 1.25rem; }
-    .pricing-toggle-wrapper { gap: 0.75rem; }
-    .pricing-toggle-label { font-size: 0.85rem; }
-    .contact-channel { font-size: 0.85rem; }
-    .starter-offer-banner { font-size: 0.8rem; padding: 0.4rem 1rem; }
+#reviews,
+#faq,
+#kontakt,
+.footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 800px;
 }
+
+
