@@ -1293,11 +1293,13 @@ a:hover .external-link-icon { opacity: 1; }
         right: calc(1.5rem + env(safe-area-inset-right, 0px));
         width: 44px; height: 44px;
     }
-    .whatsapp-float {
+    .social-floats {
         bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
         left: calc(1.5rem + env(safe-area-inset-left, 0px));
-        width: 52px; height: 52px;
+        gap: 0.5rem;
     }
+    .social-float { width: 48px; height: 48px; }
+    .social-float svg { width: 24px; height: 24px; }
     .faq-grid { grid-template-columns: 1fr; }
     .legal-content, .impressum-content { padding: 24px; }
     .payment-info { padding: 1.25rem; }
@@ -1709,32 +1711,43 @@ body .termsfeed-com---pc-overlay {
 }
 
 /* ============================================
-   Floating WhatsApp Button
+   Floating Social Quick-Actions (WhatsApp, Instagram)
    ============================================ */
-.whatsapp-float {
+.social-floats {
     position: fixed;
     bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
     left: calc(2rem + env(safe-area-inset-left, 0px));
+    display: flex;
+    gap: 0.75rem;
+    z-index: 900;
+}
+.social-float {
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #25D366;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
     text-decoration: none;
-    z-index: 900;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.whatsapp-float:hover {
-    transform: scale(1.1);
+.social-float:hover { transform: scale(1.1); }
+.social-float svg { width: 28px; height: 28px; }
+.social-float-whatsapp {
+    background: #25D366;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+}
+.social-float-whatsapp:hover {
     box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
 }
-.whatsapp-float svg {
-    width: 28px;
-    height: 28px;
+.social-float-instagram {
+    /* Instagram brand gradient */
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 4px 20px rgba(220, 39, 67, 0.3);
+}
+.social-float-instagram:hover {
+    box-shadow: 0 6px 30px rgba(220, 39, 67, 0.5);
 }
 
 
