@@ -3,18 +3,17 @@
    ============================================ */
 
 /* Named constants */
+const WEDNESDAY = 3;
 const THURSDAY = 4;
 const NAV_SCROLL_OFFSET = 120;
 const BACK_TO_TOP_THRESHOLD = 600;
 const REVEAL_THRESHOLD = 0.15;
 const SUPERSAAS_FALLBACK_URL = 'https://www.supersaas.at/schedule/ozcalisthenics/Calisthenics_Foundations';
-const COURSE_START_HOUR = 18;
-const COURSE_END_HOUR = 20;
 
-function getNextThursday() {
+function getNextWeekday(weekday) {
     const now = new Date();
     const day = now.getDay();
-    let diff = (THURSDAY - day + 7) % 7;
+    let diff = (weekday - day + 7) % 7;
     if (diff === 0) diff = 7;
     const next = new Date(now);
     next.setDate(now.getDate() + diff);
@@ -26,14 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const smallScreenMQ = window.matchMedia('(max-width: 768px)');
     const reducedMotionMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    // 0. Next Thursday date
+    // 0. Next course dates (Thursday in Bludenz, Wednesday at the new location)
+    const fmtDate = (d) => d.toLocaleDateString('de-AT', {
+        day: '2-digit', month: '2-digit', year: 'numeric'
+    });
+
+    const nextThursday = getNextWeekday(THURSDAY);
+    const nextWednesday = getNextWeekday(WEDNESDAY);
+
     const nextThursdayEl = document.getElementById('next-thursday');
-    const nextThursday = getNextThursday();
-    if (nextThursdayEl) {
-        nextThursdayEl.textContent = nextThursday.toLocaleDateString('de-AT', {
-            day: '2-digit', month: '2-digit', year: 'numeric'
-        });
-    }
+    if (nextThursdayEl) nextThursdayEl.textContent = fmtDate(nextThursday);
+
+    const nextWednesdayEl = document.getElementById('next-wednesday');
+    if (nextWednesdayEl) nextWednesdayEl.textContent = fmtDate(nextWednesday);
 
     // 0b. Dynamic age display
     const ageEl = document.getElementById('olcay-age');
@@ -317,49 +321,79 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', openBooking);
     });
 
-    // 9. iCal Download (add Thursday course to calendar)
+    // 9. iCal Download (add a recurring course to calendar)
+    const pad = (n) => String(n).padStart(2, '0');
+    const toICSDate = (d) => (
+        d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) +
+        'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + '00Z'
+    );
+
+    const downloadICS = ({ date, startHour, endHour, byDay, summary, location, description, filename }) => {
+        const start = new Date(date);
+        start.setHours(startHour, 0, 0, 0);
+        const end = new Date(date);
+        end.setHours(endHour, 0, 0, 0);
+        const ics = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//OZ Calisthenics//DE',
+            'CALSCALE:GREGORIAN',
+            'BEGIN:VEVENT',
+            `UID:${start.getTime()}-${byDay}@oz-calisthenics.at`,
+            `DTSTAMP:${toICSDate(new Date())}`,
+            `DTSTART:${toICSDate(start)}`,
+            `DTEND:${toICSDate(end)}`,
+            `RRULE:FREQ=WEEKLY;BYDAY=${byDay}`,
+            `SUMMARY:${summary}`,
+            `LOCATION:${location}`,
+            `DESCRIPTION:${description}`,
+            'URL:https://oz-calisthenics.at',
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+
+        const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+
     const icsBtn = document.getElementById('add-to-calendar');
     if (icsBtn) {
-        const pad = (n) => String(n).padStart(2, '0');
-        const toICSDate = (d) => (
-            d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) +
-            'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + '00Z'
-        );
         icsBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            const start = new Date(nextThursday);
-            start.setHours(COURSE_START_HOUR, 0, 0, 0);
-            const end = new Date(nextThursday);
-            end.setHours(COURSE_END_HOUR, 0, 0, 0);
-            const stamp = toICSDate(new Date());
-            const ics = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//OZ Calisthenics//DE',
-                'CALSCALE:GREGORIAN',
-                'BEGIN:VEVENT',
-                `UID:${start.getTime()}@oz-calisthenics.at`,
-                `DTSTAMP:${stamp}`,
-                `DTSTART:${toICSDate(start)}`,
-                `DTEND:${toICSDate(end)}`,
-                'RRULE:FREQ=WEEKLY;BYDAY=TH',
-                'SUMMARY:OZ Calisthenics – Skills & Workout',
-                'LOCATION:Purfitness Bludenz\\, Haldenweg 2a\\, 6700 Bludenz',
-                'DESCRIPTION:18:00 Skills Kurs\\n19:00 Workout Kurs\\nhttps://oz-calisthenics.at',
-                'URL:https://oz-calisthenics.at',
-                'END:VEVENT',
-                'END:VCALENDAR'
-            ].join('\r\n');
+            downloadICS({
+                date: nextThursday,
+                startHour: 18,
+                endHour: 20,
+                byDay: 'TH',
+                summary: 'OZ Calisthenics – Skills & Workout',
+                location: 'Purfitness Bludenz\\, Haldenweg 2a\\, 6700 Bludenz',
+                description: '18:00 Skills Kurs\\n19:00 Workout Kurs\\nhttps://oz-calisthenics.at',
+                filename: 'oz-calisthenics.ics'
+            });
+        });
+    }
 
-            const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'oz-calisthenics.ics';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const icsBtnWed = document.getElementById('add-to-calendar-wed');
+    if (icsBtnWed) {
+        icsBtnWed.addEventListener('click', (e) => {
+            e.preventDefault();
+            downloadICS({
+                date: nextWednesday,
+                startHour: 19,
+                endHour: 20,
+                byDay: 'WE',
+                summary: 'OZ Calisthenics – Workout',
+                location: 'Fitness Wellness Physiotherapie Branner',
+                description: '19:00 Workout Kurs\\nhttps://oz-calisthenics.at',
+                filename: 'oz-calisthenics-mittwoch.ics'
+            });
         });
     }
 
