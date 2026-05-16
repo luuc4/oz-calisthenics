@@ -500,6 +500,37 @@ p { color: var(--color-text-secondary); }
     color: var(--color-accent);
 }
 
+.course-schedule + .course-schedule {
+    margin-top: 2.5rem;
+}
+
+.badge-neu {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.6rem;
+    padding: 0.22em 0.7em;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    background: var(--color-text-on-accent);
+    border-radius: 999px;
+    box-shadow: 0 0 0 0 rgba(10, 10, 10, 0.55);
+    animation: badgeNeuPulse 2s ease-in-out infinite;
+}
+@keyframes badgeNeuPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(10, 10, 10, 0.55); }
+    50%      { box-shadow: 0 0 0 7px rgba(10, 10, 10, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .badge-neu { animation: none; }
+}
+
+.course-cards-grid-single {
+    grid-template-columns: 1fr;
+}
+
 .course-cards-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -725,6 +756,60 @@ p { color: var(--color-text-secondary); }
     color: var(--color-text-secondary);
     font-weight: 500;
     margin-top: 0.5rem;
+}
+
+/* Block validity hint + popover */
+.block-note {
+    position: relative;
+    margin: -0.25rem 0 1rem;
+    text-align: center;
+}
+.info-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+.info-hint svg { color: var(--color-accent); flex-shrink: 0; }
+.info-hint:hover,
+.info-hint:focus-visible { color: var(--color-text-primary); }
+
+.info-pop {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    z-index: 6;
+    width: max-content;
+    max-width: min(240px, 80vw);
+    padding: 0.6rem 0.8rem;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    text-align: left;
+    color: var(--color-text-primary);
+    background: var(--color-bg-card);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 4px);
+    transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+}
+.block-note:hover .info-pop,
+.info-hint:focus-visible + .info-pop,
+.info-hint[aria-expanded="true"] + .info-pop {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
 }
 
 /* Gym link styling */
