@@ -474,4 +474,22 @@ document.addEventListener('DOMContentLoaded', () => {
         buildDots();
         updateState();
     }
+
+    // 11. Info popovers (block validity hint) – tap to toggle on touch devices
+    const infoHints = document.querySelectorAll('.info-hint');
+    if (infoHints.length) {
+        const closeAll = () => infoHints.forEach(b => b.setAttribute('aria-expanded', 'false'));
+        infoHints.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                closeAll();
+                btn.setAttribute('aria-expanded', String(!isOpen));
+            });
+        });
+        document.addEventListener('click', closeAll);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAll();
+        });
+    }
 });
