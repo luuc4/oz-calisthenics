@@ -1298,7 +1298,7 @@ a:hover .external-link-icon { opacity: 1; }
         height: 48px;
     }
     .card-content .icon-wrapper svg { width: 26px; height: 26px; }
-    .about-photo { object-position: center 55%; }
+    .about-photo { aspect-ratio: 4 / 3; max-height: 420px; object-position: center 28%; }
 
     /* Kurse Mobile */
     .course-schedule-header {
