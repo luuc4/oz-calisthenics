@@ -330,6 +330,166 @@ p { color: var(--color-text-secondary); }
 }
 
 /* ============================================
+   Hero: Challenge CTA (Event-Anmeldung)
+   ============================================ */
+.challenge-cta-wrap {
+    /* Traegt die Einblend-Animation, damit der Hover-Transform der Karte
+       nicht von animation-fill-mode: forwards ueberschrieben wird. */
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 2rem;
+}
+
+.challenge-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "badge  badge"
+        "body   action";
+    align-items: center;
+    gap: 0.9rem 1.5rem;
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-md);
+    background:
+        linear-gradient(135deg, rgba(198, 255, 0, 0.14) 0%, rgba(198, 255, 0, 0.03) 55%),
+        var(--color-bg-card);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.challenge-cta::before {
+    /* Akzent-Kante links */
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--color-accent);
+}
+.challenge-cta:hover,
+.challenge-cta:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+    box-shadow: 0 14px 40px rgba(198, 255, 0, 0.22);
+}
+
+.challenge-cta-body {
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 0;
+}
+
+.challenge-cta-badge {
+    grid-area: badge;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3em 0.75em;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--color-text-on-accent);
+    background: var(--color-accent);
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.challenge-cta-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-text-on-accent);
+    animation: challengeDotPulse 1.8s ease-in-out infinite;
+}
+@keyframes challengeDotPulse {
+    0%, 100% { opacity: 1;   transform: scale(1); }
+    50%      { opacity: 0.35; transform: scale(0.7); }
+}
+
+.challenge-cta-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.challenge-cta-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+.challenge-cta-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.challenge-cta-meta-item svg {
+    flex: 0 0 auto;
+    color: var(--color-accent);
+}
+
+.challenge-cta-action {
+    grid-area: action;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+    white-space: nowrap;
+    transition:
+        background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.challenge-cta-action svg { transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.challenge-cta:hover .challenge-cta-action { background: var(--color-accent-hover); }
+.challenge-cta:hover .challenge-cta-action svg { transform: translateX(4px); }
+
+/* Sehr schmale Viewports (kleine Handys) */
+@media (max-width: 640px) {
+    .challenge-cta {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "badge"
+            "body"
+            "action";
+        gap: 0.85rem;
+        padding: 1.15rem 1.15rem 1.25rem;
+    }
+    .challenge-cta-title { font-size: 1.05rem; }
+    .challenge-cta-meta { font-size: 0.85rem; }
+    .challenge-cta-action {
+        width: 100%;
+        padding: 1rem 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .challenge-cta,
+    .challenge-cta-action,
+    .challenge-cta-action svg { transition: none; }
+    .challenge-cta:hover { transform: none; }
+    .challenge-cta:hover .challenge-cta-action svg { transform: none; }
+    .challenge-cta-dot { animation: none; }
+}
+
+/* ============================================
    Sections General
    ============================================ */
 .section {
@@ -1256,6 +1416,8 @@ a:hover .external-link-icon { opacity: 1; }
     }
     h1 { font-size: clamp(2rem, 9vw, 3.5rem); }
     .text-stroke-accent { -webkit-text-stroke-width: 1px; }
+    .hero-subtitle { margin-bottom: 1.75rem; }
+    .challenge-cta-wrap { margin-bottom: 1.5rem; }
     .hero-actions { flex-direction: column; width: 100%; }
     .btn-large { width: 100%; }
 
