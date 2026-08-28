@@ -9,6 +9,9 @@ const NAV_SCROLL_OFFSET = 120;
 const BACK_TO_TOP_THRESHOLD = 600;
 const REVEAL_THRESHOLD = 0.15;
 const SUPERSAAS_FALLBACK_URL = 'https://www.supersaas.at/schedule/ozcalisthenics/Calisthenics_Foundations';
+/* Ende der 2. OZ Calisthenics Challenge (3.10.2026, 17:00 Uhr MESZ).
+   Danach blendet sich der Hero-CTA automatisch aus. */
+const CHALLENGE_END = new Date('2026-10-03T23:59:59+02:00');
 
 function getNextWeekday(weekday) {
     const now = new Date();
@@ -38,6 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const nextWednesdayEl = document.getElementById('next-wednesday');
     if (nextWednesdayEl) nextWednesdayEl.textContent = fmtDate(nextWednesday);
+
+    // 0b. Challenge-CTA im Hero nach dem Event-Datum automatisch entfernen
+    const challengeCta = document.getElementById('challenge-cta');
+    if (challengeCta && Date.now() > CHALLENGE_END.getTime()) {
+        challengeCta.remove();
+    }
 
     // 0b. Dynamic age display
     const ageEl = document.getElementById('olcay-age');
